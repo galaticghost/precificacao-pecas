@@ -11,7 +11,7 @@ entity perfil  #white;line.bold;line:blue {
 entity perfil_sessao  #white;line.bold; {
     *id BIGINT NOT NULL <<PK>>
     <color:blue>id_perfil BIGINT NOT NULL <<FK>>
-    <color:DarkCyan> BIGINT NOT NULL <<FK>>
+    <color:DarkCyan>id_sessao BIGINT NOT NULL <<FK>>
 }
 
 entity sessao #white;line.bold;line:DarkCyan {
