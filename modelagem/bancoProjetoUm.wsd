@@ -1,0 +1,110 @@
+@startuml projetoUM
+
+entity perfil  #white;line.bold;line:blue {
+    *<color:blue>id BIGINT NOT NULL <<PK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    nome_perfil VARCHAR(200) NOT NULL
+    data_cadastro_perfil TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+}
+
+entity perfil_sessao  #white;line.bold; {
+    *id BIGINT NOT NULL <<PK>>
+    <color:blue>id_perfil BIGINT NOT NULL <<FK>>
+    <color:DarkCyan> BIGINT NOT NULL <<FK>>
+}
+
+entity sessao #white;line.bold;line:DarkCyan {
+    <color:DarkCyan>*id BIGINT NOT NULL <<PK>>
+    --
+    nome_sessao VARCHAR (255) NOT NULL
+    data_cadastro_sessao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+}
+
+entity ativo #white;line.bold;line:green {
+    <color:green>*id BIGINT NOT NULL <<PK>>
+    status VARCHAR(20) NOT NULL
+}
+
+entity usuario  #white;line.bold;line:red {
+    <color:red>*id BIGINT NOT NULL <<PK>>
+    <color:blue>id_perfil BIGINT NOT NULL <<FK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    nome_usuario VARCHAR (200) NOT NULL
+    email_usuario VARCHAR(200) NOT NULL
+    login_usuario VARCHAR(200) NOT NULL
+    senha_usuario VARCHAR(200) NOT NULL
+    data_cadastro_usuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+}
+
+entity credor #white;line.bold;line:Orange {
+    <color:Orange>*id BIGINT NOT NULL <<PK>>
+    <color:red>id_usuario BIGINT NOT NULL <<FK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    nome_credor VARCHAR(200) NOT NULL
+    data_cadastro_credor TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    telefone_credor VARCHAR(40) NOT NULL
+    celular_credor VARCHAR(40) NOT NULL 
+}
+
+entity despesa #white;line.bold;line:purple {
+    <color:purple>*id BIGINT NOT NULL <<PK>>
+    <color:Orange>id_credor BIGINT NOT NULL <<FK>>
+    <color:red>id_usuario BIGINT NOT NULL <<FK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    nome_despesa VARCHAR(100) NOT NULL
+    data_cadastro_despesa TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+}
+
+entity base #white;line.bold;line:Aqua {
+    <color:Aqua>*id BIGINT NOT NULL <<PK>>
+    <color:red>id_usuario BIGINT NOT NULL <<FK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    nome_base VARCHAR(100) NOT NULL
+    data_cadastro_base TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    responsavel_base VARCHAR(100) NOT NULL
+    telefone_base VARCHAR(40) NOT NULL
+    celular_base VARCHAR(40) NOT NULL
+    email_base VARCHAR(200) NOT NULL
+}
+
+entity lancamento  #white;line.bold;line:LightCoral  {
+    <color:LightCoral>*id BIGINT NOT NULL <<PK>>
+    <color:Aqua>id_base BIGINT NOT NULL <<FK>>
+    <color:red>id_usuario BIGINT NOT NULL <<FK>>
+    <color:Purple>id_despesa BIGINT NOT NULL <<FK>>
+    <color:green>ativo BIGINT NOT NULL <<FK>>
+    --
+    competencia_despencia CHAR(2) NOT NULL
+    data_vencimento DATE NOT NULL
+    valor_liquido DOUBLE NOT NULL
+    valor_multa DOUBLE NOT NULL
+    valor_correcao DOUBLE NOT NULL
+    data_cadastro_lancamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    observacao TEXT
+}
+
+perfil ||-[#blue]right-|{ usuario
+perfil ||-[#blue]right-|{ perfil_sessao
+sessao ||-down-|{ perfil_sessao
+credor }|-[#red]left-|| usuario
+base ||-[#red]right-|{ usuario
+lancamento }|-[#red]down-|| usuario
+lancamento }|-[#Aqua]down-|| base
+lancamento }|-[#purple]down-|| despesa
+credor ||-[#Orange]down-|{ despesa
+usuario ||-[#red]left-|{ despesa
+
+ativo ||-[#green]-|| perfil
+ativo ||-[#green]-|| usuario
+ativo ||-[#green]-|| lancamento
+ativo ||-[#green]-|| base
+ativo ||-[#green]left-|| despesa
+ativo ||-[#green]left-|| credor
+
+
+@enduml

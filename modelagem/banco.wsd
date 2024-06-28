@@ -1,0 +1,30 @@
+@startuml Banco
+
+entity artesao {
+    *id BIGINT NOT NULL
+    primeiro_nome VARCHAR(100) NOT NULL
+    sobrenome VARCHAR(200) NOT NULL
+    login VARCHAR(200) NOT NULL
+    senha VARCHAR(200) NOT NULL
+    email VARCHAR(200) NOT NULL
+    endereco TEXT NOT NULL
+    estado VARCHAR(200) NOT NULL
+    municipio VARCHAR(200) NOT NULL
+    perfil VARCHAR(100) NOT NULL
+}
+
+entity custos_variaveis {
+    *id BIGINT NOT NULL
+    total DOUBLE NOT NULL
+    --
+}
+
+entity material {
+    *id BIGINT NOT NULL
+    nome VARCHAR(100) NOT NULL
+    valor DOUBLE NOT NULL
+    pecas INT NOT NULL
+    --
+}
+
+@enduml
