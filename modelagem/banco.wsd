@@ -1,17 +1,25 @@
 @startuml Banco
 
 entity artesao {
-    *id BIGINT NOT NULL
+    *id BIGINT NOT NULL <<PK>>
+    id_estado BIGINT NOT NULL <<FK>>
+    --
     primeiro_nome VARCHAR(100) NOT NULL
     sobrenome VARCHAR(200) NOT NULL
     login VARCHAR(200) NOT NULL
     senha VARCHAR(200) NOT NULL
     email VARCHAR(200) NOT NULL
     endereco TEXT NOT NULL
-    estado VARCHAR(200) NOT NULL
     municipio VARCHAR(200) NOT NULL
     perfil VARCHAR(100) NOT NULL
 }
+
+entity estado {
+    *id BIGINT NOT NULL
+    --
+    estado VARCHAR (255) NOT NULL
+}
+
 
 entity custos_variaveis {
     *id BIGINT NOT NULL
