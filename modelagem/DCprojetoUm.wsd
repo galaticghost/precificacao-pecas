@@ -1,0 +1,128 @@
+@startuml Diagrama de Classe UM
+
+class Usuario {
+    -id: int
+    -nome: str
+    -email: str
+    -ativo: bool
+    -perfil: perfil
+    -login: str
+    -senha: str
+    -dataCadastro: date
+    --
+    +construct(id,nome,email,ativo,perfil,login,senha,dataCadastro)
+    +login(login,senha)
+    +getters()
+    +setters()
+}
+
+class Perfil {
+    -id: int
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,ativo,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class Base {
+    -id: int
+    -usuario: usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    -responsavel: str
+    -telefone: str
+    -celular: str
+    -email: str
+    --
+    +construct(id,usuario,ativo,nome,dataCadastro,responsavel,telefone,celular,email)
+    +getters()
+    +setters()
+}
+
+class Lancamento {
+    -id: int
+    -usuario: usuario
+    -despesa: despesa
+    -base: base
+    -ativo: bool
+    -competenciaDespesa: bool
+    -dataVencimento: date
+    -valorLiquido: double
+    -valorMulta: double
+    -valorCorrecao: double
+    -dataCadastro: date
+    -observacao: TEXT
+    --
+    +construct(id,usuario,despesa,base,ativo,compentenciaDespesa)
+    +gerarVencimento(dataVencimento)
+    +calcularLiquido(valorLiquido)
+    +calcularMulta(valorLiquido,valorMulta)
+    +calcularCorrecao(valorLiquido,valorMulta,valorCorrecao)
+    +inserirObservacao(observacao)
+    +getters()
+    +setters()
+}
+
+class Credor {
+    -id: int
+    -usuario: usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    -telefone: str
+    -celular: str
+    --
+    +construct(id,usuario,ativo,nome,dataCadastro,telefone,celular)
+    +getters()
+    +setters()
+}
+
+class Despesa {
+    -id: int
+    -credor: Credor
+    -usuario: usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,credor,usuario,ativo,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class Sessao {
+    -id: int
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class PerfilSessao {
+    -id: int
+    -perfil: perfil
+    -sessao: Sessao
+    ---
+    +construct(id,perfil,sessao)
+    +getters()
+    +setters()
+}
+
+Usuario "1..*" <--* "1..1" Perfil
+Usuario "1..1" *--> "1..*" Credor
+Usuario "1..1" *--> "1..*" Despesa
+Usuario "1..1" *--> "1..*" Lancamento
+Usuario "1..1" *--> "1..*" Base
+Credor "1..1" *--> "1..*" Despesa
+Despesa "1..1" *--> "1..*" Lancamento
+Base "1..1" *--> "1..*" Lancamento
+Sessao "1..1" <--* "1..*" PerfilSessao
+Perfil "1..1" <--* "1..*" PerfilSessao
+
+@enduml 

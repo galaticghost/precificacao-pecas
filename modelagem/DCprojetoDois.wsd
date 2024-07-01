@@ -1,0 +1,112 @@
+@startuml Diagrama da classes Dois 
+
+class Sessao {
+    -id: int
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class Usuario {
+    -id: int
+    -ativo: bool 
+    -nome: str
+    -email: str
+    -login: str
+    -senha: str
+    -dataCadastro: date
+    -telefone: str
+    --
+    +construct(id,ativo,nome,email,login,senha,dataCadastro,telefone)
+    +getters()
+    +setters()
+}
+
+class Perfil {
+    -id: int
+    -usuario: Usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,usuario,ativo,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class PerfilSessao {
+    -id: int
+    -perfil: Perfil
+    -sessao: Sessao
+    --
+    +construct(id,perfil,sessao)
+    +getters()
+    +setters()
+}
+
+class FormaAtendimento {
+    -id: int
+    -usuario: Usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,usuario,ativo,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class Publico {
+    -id: int
+    -usuario: Usuario
+    -ativo: bool
+    -nome: str
+    -dataCadastro: date
+    --
+    +construct(id,usuario,ativo,nome,dataCadastro)
+    +getters()
+    +setters()
+}
+
+class PerguntaPublico {
+    -id: int
+    -usuario: Usuario
+    -ativo: bool
+    -publico: Publico
+    -descricaoPergunta: str
+    -dataCadastro: date
+    --
+    +construct(id,usuario,ativo,publico,dataCadastro,descricaoPergunta)
+    +getters()
+    +setters()
+}
+
+class Atendimento {
+    -id: int
+    -formaAtendimento: FormaAtendimento
+    -perguntaPublico: PerguntaPublico
+    -usuario: Usuario
+    -ativo: bool
+    -dataCadastro: date
+    -respostaAtendimento: str
+    --
+    +construct(id,formaAtendimento,perguntaPublico,usuario,ativo,dataCadastro)
+    +gerarResposta(respostaAtendimento)
+    +getters()
+    +setters()
+}
+
+Sessao "1..1" *-up-> "1..*"  PerfilSessao
+Perfil "1..1" *-up-> "1..*" PerfilSessao
+Perfil "1..*" <--* "1..1" Usuario
+Usuario "1..1" *-left-> "1..*" FormaAtendimento
+Publico "1..1" *-left-> "1..*" PerguntaPublico
+Publico "1..*" <--* "1..1" Usuario
+Usuario "1..1" *--> "1..*" PerguntaPublico
+Atendimento "1..*" <--* "1..1" FormaAtendimento
+Atendimento "1..*" <--* "1..1" PerguntaPublico
+Atendimento "1..*" <--* "1..1" Usuario
+@enduml
