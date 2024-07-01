@@ -160,3 +160,6 @@ START 1
 CACHE 1;
 
 ALTER TABLE lancamento ALTER COLUMN id SET DEFAULT NEXTVAL('lancamento_id_seq');
+
+INSERT INTO usuario(id_perfil,ativo,nome_usuario,email_usuario,login_usuario,senha_usuario) VALUES
+(1,1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','CarlosEduardo798','26a6d15d8c21c99dc6455f7831741db4')
