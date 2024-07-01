@@ -79,7 +79,7 @@ entity lancamento  #white;line.bold;line:LightCoral  {
     <color:Purple>id_despesa BIGINT NOT NULL <<FK>>
     <color:green>ativo BIGINT NOT NULL <<FK>>
     --
-    competencia_despencia CHAR(2) NOT NULL
+    competencia_despesa CHAR(2) NOT NULL
     data_vencimento DATE NOT NULL
     valor_liquido DOUBLE NOT NULL
     valor_multa DOUBLE NOT NULL
@@ -105,6 +105,5 @@ ativo ||-[#green]-|| lancamento
 ativo ||-[#green]-|| base
 ativo ||-[#green]left-|| despesa
 ativo ||-[#green]left-|| credor
-
 
 @enduml
