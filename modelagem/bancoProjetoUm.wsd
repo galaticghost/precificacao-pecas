@@ -92,7 +92,7 @@ perfil ||-[#blue]right-|{ usuario
 perfil ||-[#blue]right-|{ perfil_sessao
 sessao ||-down-|{ perfil_sessao
 credor }|-[#red]left-|| usuario
-base ||-[#red]right-|{ usuario
+base }|-[#red]right-|| usuario
 lancamento }|-[#red]down-|| usuario
 lancamento }|-[#Aqua]down-|| base
 lancamento }|-[#purple]down-|| despesa

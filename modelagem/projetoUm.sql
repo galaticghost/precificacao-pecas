@@ -141,7 +141,7 @@ CREATE TABLE lancamento (
 	id_base BIGINT NOT NULL,
 	id_despesa BIGINT NOT NULL,
 	ativo BIGINT NOT NULL,
-	competencia_despencia CHAR(2) NOT NULL,
+	competencia_despesa CHAR(2) NOT NULL,
 	data_vencimento DATE NOT NULL,
 	valor_liquido NUMERIC NOT NULL,
 	valor_multa NUMERIC NOT NULL,
