@@ -127,3 +127,10 @@ CREATE TABLE atendimento(
 
 
 INSERT INTO ativo(id,status) VALUES (1,'Sim'),(2,'Não')
+
+INSERT INTO usuario(ativo,nome_usuario,email_usuario,login_usuario,senha_usuario,telefone_usuario)
+VALUES (1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','carloseduardo7854','26a6d15d8c21c99dc6455f7831741db4','989224922')
+
+INSERT INTO forma_atendimento(id_usuario,ativo,nome_atendimento) VALUES (1,1,'whatsapp')
+
+INSERT INTO perfil(id_usuario,ativo,nome_perfil) VALUES (1,1,'Junior Moraes')
