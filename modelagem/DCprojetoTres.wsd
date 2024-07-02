@@ -1,0 +1,64 @@
+@startuml Diagrama de class Três
+
+class Conexao {
+    -localhost: str
+    -usuario: str
+    -senha: str
+    -banco: str
+    -conexao: mysql
+    --
+    -conexao()
+    +construct()
+}
+
+class HorasTrabalhadas{
+    -id: int
+    -numeroHoras: int
+    -salarioDesejado: double
+    -valorHora: double
+    -valorTotalHoras: double
+    --
+    +getters()
+    +setters()
+    +calcular(salarioDesejado,numeroHoras)
+    +inserir()
+}
+
+class CustosVariaveis {
+
+}
+
+class CustosFixos {
+
+}
+
+class Venda {
+    -id: int
+    -idCustosVariaveis: int
+    -idHorasTrabalhadas: int
+    -idCustosFixos: int
+    -totalParcial: double
+    -margemLucro: int
+    -valorLucro: int
+    -despesaComercializacao: int
+    -valorDespesa: double
+    -valorTotal: double
+    --
+    +getters()
+    +setters()
+    +consultarTotalParcial()
+    +calcularLucro()
+    +calcularDespesa()
+    +calcularTotalVenda()
+    +inserir()
+}
+
+Conexao "1..1" -up-|> "1..*" CustosFixos
+Conexao "1..1" -left-|> "1..*" HorasTrabalhadas
+Conexao "1..1" -left-|> "1..*" CustosVariaveis
+Conexao "1..1" -left-|> "1..*" Venda
+Venda -- CustosVariaveis
+Venda -- HorasTrabalhadas
+Venda -- CustosFixos
+
+@enduml

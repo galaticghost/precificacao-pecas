@@ -13,9 +13,10 @@ $valorFrete = $_POST['txtFrete'];
 $quantidadeFrete = $_POST['txtQuantidadeFrete'];
 
 $materialValor = $valor/$quantidade;
+$materialValor = round($materialValor,2,PHP_ROUND_HALF_UP);
 
 echo $material;
-echo "<br>" . $materialValor;
+echo "<br>Valor material: " . $materialValor;
 
 $embalagem = $valorEmbalagem / $quantidadeEmbalagem;
 $cartoes = $valorCartoes / $quantidadeCartoes;
@@ -23,7 +24,7 @@ $etiquetas = $valorEtiquetas / $quantidadeEtiqueta;
 $frete = $valorFrete / $quantidadeFrete;
 
 $valorTotalCustosVariaveis = $materialValor + $embalagem + $cartoes + $etiquetas + $frete;
-echo "<br>" . round($valorTotalCustosVariaveis,2,PHP_ROUND_HALF_UP);
+echo "<br> Valor total dos custos variáveis: " . round($valorTotalCustosVariaveis,2,PHP_ROUND_HALF_UP);
 
 $horas = $_POST['txtHoras'];
 $salario = $_POST['txtSalario'];
@@ -31,7 +32,7 @@ $salario = $_POST['txtSalario'];
 $valorHora = $salario / 176;
 $valorTotalHorasTrabalhadas = $horas * round($valorHora, 3, PHP_ROUND_HALF_UP);
 
-echo "<br>" . $valorTotalHorasTrabalhadas;
+echo "<br> Horas trabalhadas: " . round($valorTotalHorasTrabalhadas,2,PHP_ROUND_HALF_UP);
 
 $aluguel = $_POST['txtAluguel'];
 $agua = $_POST['txtAgua'];
@@ -41,15 +42,15 @@ $internet = $_POST['txtInternet'];
 $iptu = $_POST['txtIptu'];
 
 $custosFixosTotal = $aluguel + $agua + $luz + $telefone + $internet + $iptu;
-echo "<br>" . $custosFixosTotal;
+echo "<br>Custos fixos total: " . $custosFixosTotal;
 
 $valorParcial = $custosFixosTotal + $valorTotalHorasTrabalhadas + $valorTotalCustosVariaveis;
 
 
 $margemLucro = $valorParcial * $_POST['txtMargemLucro'] / 100;
 
-echo "<br>" . round($margemLucro,2,PHP_ROUND_HALF_UP);
+echo "<br>Margem de lucro: " . round($margemLucro,2,PHP_ROUND_HALF_UP);
 
 $despesasComercialização = $valorParcial * $_POST['txtDespesas'] / 100;
 
-echo "<br>" . round($despesasComercialização,2,PHP_ROUND_HALF_UP);
+echo "<br>Despesas de comercialização: " . round($despesasComercialização,2,PHP_ROUND_HALF_UP);

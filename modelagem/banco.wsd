@@ -1,38 +1,81 @@
 @startuml Banco
 
-entity artesao {
+entity usuario {
     *id BIGINT NOT NULL <<PK>>
     id_estado BIGINT NOT NULL <<FK>>
+    id_perfil BIGINT NOT NULL <<FK>>
     --
-    primeiro_nome VARCHAR(100) NOT NULL
-    sobrenome VARCHAR(200) NOT NULL
-    login VARCHAR(200) NOT NULL
-    senha VARCHAR(200) NOT NULL
-    email VARCHAR(200) NOT NULL
+    nome_usuario VARCHAR(255) NOT NUL
+    login_usuario VARCHAR(200) NOT NULL
+    senha_usuario VARCHAR(200) NOT NULL
+    email_usuario VARCHAR(200) NOT NULL
     endereco TEXT NOT NULL
     municipio VARCHAR(200) NOT NULL
-    perfil VARCHAR(100) NOT NULL
 }
 
 entity estado {
-    *id BIGINT NOT NULL
+    *id BIGINT NOT NULL <<PK>>
     --
-    estado VARCHAR (255) NOT NULL
+    estado VARCHAR(255) NOT NULL
 }
 
+entity perfil {
+    *id BIGINT NOT NULL <<PK>>
+    --
+    nome_perfil VARCHAR(255) NOT NULL
+}
 
 entity custos_variaveis {
     *id BIGINT NOT NULL
-    total DOUBLE NOT NULL
     --
+    total_parcial DOUBLE NOT NULL
+    
+}
+
+entity horas_trabalhadas {
+    *id BIGINT NOT NULL
+    --
+    numero_horas BIGINT NOT NULL DEFAULT 1
+    salario_desejado DOUBLE NOT NULL DEFAULT 0
+    valor_hora DOUBLE NOT NULL 
+}
+
+entity custos_fixos {
+    *id BIGINT NOT NULL
+    aluguel DOUBLE NOT NULL
+    agua DOUBLE NOT NULL
+    luz DOUBLE NOT NULL
+    telefone DOUBLE NOT NULL
+    internet DOUBLE NOT NULL
+    iptu DOUBLE NOT NULL
+    pecas_produzida_mes BIGINT NOT NULL DEFAULT 1
 }
 
 entity material {
     *id BIGINT NOT NULL
+    --
     nome VARCHAR(100) NOT NULL
     valor DOUBLE NOT NULL
     pecas INT NOT NULL
-    --
 }
+
+entity venda {
+    *id BIGINT NOT NULL <<PK>>
+    id_custos_variaveis BIGINT NOT NULL <<FK>>
+    id_horas_trabalhadas BIGINT NOT NULL <<FK>>
+    id_custos_fixos BIGINT NOT NULL <<FK>>
+    --
+    total_parcial DOUBLE NOT NULL
+    margem_lucro BIGINT NOT NULL DEFAULT 0
+    despesas_comercializacao BIGINT NOT NULL DEFAULT 0
+    total_venda DOUBLE NOT NULL
+}
+
+usuario }|--|| estado
+usuario -- perfil
+venda ||--|| custos_variaveis
+venda ||--|| horas_trabalhadas
+venda -- custos_fixos
+
 
 @enduml
