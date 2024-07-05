@@ -34,7 +34,7 @@ entity custos_variaveis {
     valor_cartoes NUMERIC(10,2) NOT NULL
     pecas_cartoes BIGINT NOT NULL
     valor_etiquetas NUMERIC(10,2) NOT NULL
-    pecas_etiquetas BITINT NOT NULL
+    pecas_etiquetas BIGINT NOT NULL
     valor_frete NUMERIC(10,2) NOT NULL
     pecas_frete BIGINT NOT NULL
     valor_outros NUMERIC(10,2) DEFAULT 0

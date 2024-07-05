@@ -13,7 +13,7 @@ $valorFrete = $_POST['txtFrete'];
 $quantidadeFrete = $_POST['txtQuantidadeFrete'];
 
 $materialValor = $valor/$quantidade;
-$materialValor = round($materialValor,2,PHP_ROUND_HALF_UP);
+$materialValor = round($materialValor,2);
 
 echo $material;
 echo "<br>Valor material: " . $materialValor;

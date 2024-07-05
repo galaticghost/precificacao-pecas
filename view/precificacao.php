@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Precificação Peças</h1>
-    <form method='post' action='../controller/produtoController.php'>
+    <form method='POST' action='../controller/vendaController.php?quantidadeMateriais=<?php echo $_GET['quantidadeMateriais'] . "&quantidadeCustoFixo=" . $_GET['quantidadeCustoFixo'];?>'>
         <table border=1>    
             <tr>
                 <th>Custos Variáveis</th>
@@ -19,11 +19,11 @@
                 <th>Peças</th>
             </tr>
             
-            <?php
+            <?php            
             for($i = 0;$i < $_GET['quantidadeMateriais'];$i++){
                 echo "
                 <tr>
-                    <td><input type='text' placeholder='Digite o material...' name='material' required></td>
+                    <td><input type='text' placeholder='Digite o material...' name='material" . $i . "' required></td>
                     <td><input type='number' step='0.01' min='0' placeholder='Digite o valor...' name='valor" . $i . "' required></td>
                     <td><input type='number' min='1' placeholder='Digite a quantidade de peças...' name='pecas" . $i . "' required></td>                
                 </tr>";
