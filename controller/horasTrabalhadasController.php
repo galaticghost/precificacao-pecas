@@ -1,6 +1,21 @@
 <?php
-require_once('../model/horasTrabalhadasModel.php');
+require_once('../model/vendaModel.php');
 
-class horasTrabalhadasController {
+class ValorController {
+
+    
+
+
+
+
+
+
+
+    public function calcular(){
+
+    }
+
+
+
 
 }

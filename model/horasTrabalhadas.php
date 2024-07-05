@@ -53,9 +53,11 @@ class HorasTrabalhadas extends Conexao{
     }
     
     public function inserir(){
-        $sql = "INSERT INTO horas_trabalhadas(numero_horas,salario_desejado,valor_hora,valor_total_horas) VALUES (?,?,?,?);";
+        $sql = "INSERT INTO horas_trabalhadas(numero_horas,salario_desejado,
+        valor_hora,valor_total_horas) VALUES (?,?,?,?);";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bind_param('iddd',$this->numeroHoras,$this->salarioDesejado,$this->valorHora,$this->valorTotalHoras);
+        $stmt->bind_param('iddd',$this->numeroHoras,$this->salarioDesejado,
+        $this->valorHora,$this->valorTotalHoras);
         $stmt->execute() or
         die('Falha na inserção');
     } 

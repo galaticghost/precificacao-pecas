@@ -28,16 +28,16 @@ entity perfil {
 entity custos_variaveis {
     *id BIGINT NOT NULL
     --
-    total_parcial DOUBLE NOT NULL
-    valor_embalagem DOUBLE NOT NULL
+    total_parcial NUMERIC(10,2) NOT NULL
+    valor_embalagem NUMERIC(10,2) NOT NULL
     pecas_embalagem BIGINT NOT NULL
-    valor_cartoes DOUBLE NOT NULL
+    valor_cartoes NUMERIC(10,2) NOT NULL
     pecas_cartoes BIGINT NOT NULL
-    valor_etiquetas DOUBLE NOT NULL
+    valor_etiquetas NUMERIC(10,2) NOT NULL
     pecas_etiquetas BITINT NOT NULL
-    valor_frete DOUBLE NOT NULL
+    valor_frete NUMERIC(10,2) NOT NULL
     pecas_frete BIGINT NOT NULL
-    valor_outros DOUBLE DEFAULT 0
+    valor_outros NUMERIC(10,2) DEFAULT 0
     pecas_outros BIGINT DEFAULT 1
 }
 
@@ -45,26 +45,36 @@ entity horas_trabalhadas {
     *id BIGINT NOT NULL
     --
     numero_horas BIGINT NOT NULL DEFAULT 1
-    salario_desejado DOUBLE NOT NULL DEFAULT 0
-    valor_hora DOUBLE NOT NULL 
+    salario_desejado NUMERIC(10,2) NOT NULL DEFAULT 0
+    valor_hora NUMERIC(10,2) NOT NULL 
 }
 
 entity custos_fixos {
-    *id BIGINT NOT NULL
-    aluguel DOUBLE NOT NULL
-    agua DOUBLE NOT NULL
-    luz DOUBLE NOT NULL
-    telefone DOUBLE NOT NULL
-    internet DOUBLE NOT NULL
-    iptu DOUBLE NOT NULL
+    *id BIGINT NOT NULL <<PK>>
+    --
+    aluguel NUMERIC(10,2) NOT NULL
+    agua NUMERIC(10,2) NOT NULL
+    luz NUMERIC(10,2) NOT NULL
+    telefone NUMERIC(10,2) NOT NULL
+    internet NUMERIC(10,2) NOT NULL
+    iptu NUMERIC(10,2) NOT NULL
     pecas_produzida_mes BIGINT NOT NULL DEFAULT 1
 }
 
+entity outros_fixos {
+    *id BIGINT NOT NULL <<PK>>
+    id_custos_fixos BIGINT NOT NULL <<FK>>
+    --
+    custo_fixo VARCHAR(100) NOT NULL
+    valor NUMERIC(10,2) NOT NULL
+}
+
 entity material {
-    *id BIGINT NOT NULL
+    *id BIGINT NOT NULL <<PK>>
+    id_custos_variaveis BIGINT NOT NULL <<FK>>
     --
     nome VARCHAR(100) NOT NULL
-    valor DOUBLE NOT NULL
+    valor NUMERIC(10,2) NOT NULL
     pecas INT NOT NULL
 }
 
@@ -74,10 +84,10 @@ entity venda {
     id_horas_trabalhadas BIGINT NOT NULL <<FK>>
     id_custos_fixos BIGINT NOT NULL <<FK>>
     --
-    total_parcial DOUBLE NOT NULL
+    total_parcial NUMERIC(10,2) NOT NULL
     margem_lucro BIGINT NOT NULL DEFAULT 0
     despesas_comercializacao BIGINT NOT NULL DEFAULT 0
-    total_venda DOUBLE NOT NULL
+    total_venda NUMERIC(10,2) NOT NULL
 }
 
 usuario }|--|| estado
@@ -86,5 +96,6 @@ venda ||--|| custos_variaveis
 venda ||--|| horas_trabalhadas
 venda -- custos_fixos
 custos_variaveis ||--|{ material
+custos_fixos ||--o{ outros_fixos
 
 @enduml
