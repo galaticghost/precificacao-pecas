@@ -29,7 +29,16 @@ entity custos_variaveis {
     *id BIGINT NOT NULL
     --
     total_parcial DOUBLE NOT NULL
-    
+    valor_embalagem DOUBLE NOT NULL
+    pecas_embalagem BIGINT NOT NULL
+    valor_cartoes DOUBLE NOT NULL
+    pecas_cartoes BIGINT NOT NULL
+    valor_etiquetas DOUBLE NOT NULL
+    pecas_etiquetas BITINT NOT NULL
+    valor_frete DOUBLE NOT NULL
+    pecas_frete BIGINT NOT NULL
+    valor_outros DOUBLE DEFAULT 0
+    pecas_outros BIGINT DEFAULT 1
 }
 
 entity horas_trabalhadas {
@@ -76,6 +85,6 @@ usuario -- perfil
 venda ||--|| custos_variaveis
 venda ||--|| horas_trabalhadas
 venda -- custos_fixos
-
+custos_variaveis ||--|{ material
 
 @enduml
