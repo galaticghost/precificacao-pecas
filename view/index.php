@@ -53,7 +53,7 @@
     <hr>
     <h1>Custos Fixos</h1>
     <label>Aluguel:</label>
-    <input type="number" step='0.01' min="0" placeholder="Digite o valor do aluguel..." name="txtAluguel" required="">
+    <input type="number" step='0.01' min="0" placeholder="Digite o valor do aluguel..." name="txtAluguel" required>
     <br>
     <label>Água:</label>
     <input type="number" step='0.01' min="0" placeholder="Digite o valor da água..." name="txtAgua" required="">

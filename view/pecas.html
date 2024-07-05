@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantidade de peças</title>
+    <title>Quantidade</title>
 </head>
 <body>
     <form method="GET" action ="precificacao.php?">
         <label>Quantidade de materiais</label>
         <input type="number" min="1" placeholder="Digite a quantidade de materiais" required name="quantidadeMateriais">
+        
+        <br>
+
+        <label>Custo fixos outros</label>
+        <input type="number" min="0" placeholder="Digite a quantidade de outros" name="quantidadeCustoFixo">
+        
         <input type="submit" value="Continuar" />
     </form>
 </body>
