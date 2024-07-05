@@ -29,6 +29,7 @@
                 </tr>";
             }
             ?>
+            
             <tr>
                 <th>Embalagem por peça</th>
                 <td><input type='number' step='0.01' min='0' placeholder='Digite o valor da embalagem...' name='valorEmbalagem' required></td>
@@ -64,7 +65,9 @@
             </tr>
             
             <tr>
+                <th></th>
                 <th>Custos Fixos</th>
+                <th></th>
             </tr>
             
             <tr>
@@ -112,6 +115,18 @@
 
             <tr>
                 <th>Margem de lucros</th>
+                <td><input type='number' min='0' max='100' placeholder='Digite a porcentagem da margem de lucro...' name='margemLucro' required></td>
+            </tr>
+
+            <tr>
+                <th>Despesas de Comercialização</th>
+                <td><input type='number' min='0' max='100' placeholder='Digite a porcentagem das despesas de comercialização...' name='despesaComercializacao' required></td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th><input type='submit' value='Calcular'></th>
+                <th></th>
             </tr>
         </table>
     </form>
