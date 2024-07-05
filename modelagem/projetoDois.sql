@@ -125,7 +125,6 @@ CREATE TABLE atendimento(
 	FOREIGN KEY (ativo) REFERENCES ativo(id)
 );
 
-
 INSERT INTO ativo(id,status) VALUES (1,'Sim'),(2,'Não')
 
 INSERT INTO usuario(ativo,nome_usuario,email_usuario,login_usuario,senha_usuario,telefone_usuario)
@@ -133,4 +132,4 @@ VALUES (1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','carlos
 
 INSERT INTO forma_atendimento(id_usuario,ativo,nome_atendimento) VALUES (1,1,'whatsapp')
 
-INSERT INTO perfil(id_usuario,ativo,nome_perfil) VALUES (1,1,'Junior Moraes')
+INSERT INTO perfil(id_usuario,ativo,nome_perfil) VALUES (1,1,'Empregador')
