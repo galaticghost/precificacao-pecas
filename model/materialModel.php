@@ -16,6 +16,10 @@ class Material extends Conexao {
         $this->valorTotalMaterial = round(($this->valor / $this->quantidadePecas),2);
     }
 
+    public function getValorTotalMaterial(){
+        return $this->valorTotalMaterial;
+    }
+
     //custos variáveis = cv
     public function setIdCv($idCv){
         $this->idCustosVariaveis = $idCv;

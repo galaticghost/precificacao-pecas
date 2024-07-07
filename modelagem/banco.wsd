@@ -39,6 +39,7 @@ entity custos_variaveis {
     pecas_frete BIGINT NOT NULL
     valor_outros NUMERIC(10,2) DEFAULT 0
     pecas_outros BIGINT DEFAULT 1
+    valor_total NUMERIC(10,2) NOT NULL
 }
 
 entity horas_trabalhadas {
