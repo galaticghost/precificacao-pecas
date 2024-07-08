@@ -25,14 +25,53 @@ class HorasTrabalhadas{
 }
 
 class CustosVariaveis {
-
+    -id: int
+    -totalParcial: double
+    -embalagem: 
+    -cartoes:
+    -etiquetas:
+    -frete:
+    -outros:
+    -valorTotal: double
+    --
+    +getters
+    +setters
+    +construct
+    +inserirESetId()
 }
 
 class CustosFixos {
-
+    -id: int
+    -aluguel: double
+    -agua: double
+    -luz: double
+    -telefone: double
+    -internet: double
+    -iptu: double
+    -valorOutros: double
+    -valorParcial: double
+    -pecasProduzidasMes: int
+    -valorTotal: double
+    --
+    +getters()
+    +setters()
+    +construct()
+    +inserir()
 }
 
-class Materiais {
+class CustosFixosOutro{
+    -id: int
+    -idCustosFixos: int
+    -custoFixo: str
+    -valor: double
+    --
+    +getters
+    +setters
+    +construct
+    +inserir
+}
+
+class Material {
     -id: int
     -idCustosVariaveis: int
     -material: str
@@ -43,6 +82,7 @@ class Materiais {
     +getters()
     +setters()
     +construct()
+    +inserir()
 }
 
 class Venda {
@@ -70,6 +110,10 @@ Conexao "1..1" <|-up- "1..*" CustosFixos
 Conexao "1..1" <|-left- "1..*" HorasTrabalhadas
 Conexao "1..1" <|-left- "1..*" CustosVariaveis
 Conexao "1..1" <|-left- "1..*" Venda
+Conexao "1..1" <|-- "1..*" Material
+Conexao "1..1" <|-Right- "1..*" CustosFixosOutro
+CustosFixos "1..1" -- "1..*" CustosFixosOutro
+CustosVariaveis "1..1" -- "1..*" Material
 Venda <--* CustosVariaveis
 Venda <--* HorasTrabalhadas
 Venda <--* CustosFixos

@@ -7,6 +7,7 @@ require_once('custosFixosOutroModel.php');
 
 class Venda extends Conexao{
     
+    private $id;
     private $idCustosVariavel;
     private $idHorasTrabalhadas;
     private $idCustosFixos;
@@ -16,7 +17,7 @@ class Venda extends Conexao{
     private $despesaComercializacao;
     private $valorDespesa;
     private $valorTotal;
-
+//parent <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public function setIds(){
     //    $this->idCustosVariavel = 
         $this->idHorasTrabalhadas = 8;
@@ -63,5 +64,11 @@ class Venda extends Conexao{
         $stmt->bind_param('iiidiid',$this->idCustosVariavel,$this->idHorasTrabalhadas,$this->idCustosFixos,
         $this->totalParcial,$this->margemLucro,$this->despesaComercializacao,$this->valorTotal);
         $stmt->execute() or die('Falha na inserção');
+        $stmt->close();
+
+        $sql = "SELECT id FROM venda/*78785*/ ORDER BY id DESC LIMIT 1";
+        $id = $this->conexao->query($sql);
+        $id = mysqli_fetch_row($id);
+        $this->id = $id[0]; 
     }
 }
