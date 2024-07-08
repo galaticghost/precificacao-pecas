@@ -46,6 +46,11 @@ class CustosFixosOutro extends Conexao {
         $this->valor = $valor;
     }
     public function inserir(){
-        $sql = "INSERT INTO ";
+        $sql = "INSERT INTO outros_fixos(id_custos_fixos,custo_fixo,valor) VALUES
+        (?,?,?)";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bind_param('isd',$this->idCustosFixos,$this->custoFixo,$this->valor);
+        $stmt->execute() or die('Falha na inserção');
+        $stmt->close();
     }
 }

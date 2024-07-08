@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Jul-2024 às 16:08
+-- Tempo de geração: 08-Jul-2024 às 16:22
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -40,6 +40,16 @@ CREATE TABLE `custos_fixos` (
   `pecas_produzidas_mes` bigint(20) DEFAULT 1,
   `valor_total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `custos_fixos`
+--
+
+INSERT INTO `custos_fixos` (`id`, `aluguel`, `agua`, `luz`, `telefone`, `internet`, `iptu`, `valor_outros`, `valor_parcial`, `pecas_produzidas_mes`, `valor_total`) VALUES
+(1, '500.00', '200.00', '100.00', '50.00', '25.00', '12.00', '1.00', '888.00', 3, '296.00'),
+(2, '500.00', '200.00', '100.00', '50.00', '25.00', '12.00', '1.00', '888.00', 3, '296.00'),
+(3, '500.00', '200.00', '100.00', '50.00', '25.00', '12.00', '1.00', '888.00', 3, '296.00'),
+(4, '500.00', '200.00', '100.00', '50.00', '25.00', '12.00', '1.00', '888.00', 3, '296.00');
 
 -- --------------------------------------------------------
 
@@ -79,7 +89,11 @@ INSERT INTO `custos_variaveis` (`id`, `total_parcial`, `valor_embalagem`, `pecas
 (12, '2.75', '3.00', 2, '2.00', 2, '2.00', 1, '3.00', 4, '4.00', 2, '13.00'),
 (13, '2.75', '3.00', 2, '2.00', 2, '2.00', 1, '3.00', 4, '4.00', 2, '13.00'),
 (14, '2.75', '3.00', 2, '2.00', 2, '2.00', 1, '3.00', 4, '4.00', 2, '13.00'),
-(15, '2.75', '3.00', 2, '2.00', 2, '2.00', 1, '3.00', 4, '4.00', 2, '13.00');
+(15, '2.75', '3.00', 2, '2.00', 2, '2.00', 1, '3.00', 4, '4.00', 2, '13.00'),
+(16, '4.10', '10.00', 3, '3.00', 30, '3.00', 30, '5.00', 30, '1.00', 2, '41.20'),
+(17, '4.10', '10.00', 3, '3.00', 30, '3.00', 30, '5.00', 30, '1.00', 2, '41.20'),
+(18, '4.10', '10.00', 3, '3.00', 30, '3.00', 30, '5.00', 30, '1.00', 2, '41.20'),
+(19, '4.10', '10.00', 3, '3.00', 30, '3.00', 30, '5.00', 30, '1.00', 2, '41.20');
 
 -- --------------------------------------------------------
 
@@ -192,7 +206,19 @@ CREATE TABLE `material` (
 INSERT INTO `material` (`id`, `id_custos_variaveis`, `material`, `valor`, `quantidade_pecas`, `valor_total_material`) VALUES
 (1, 15, 'Madeira', '3.00', 4, '0.00'),
 (2, 15, 'Pedra', '4.00', 4, '0.00'),
-(3, 15, 'Terra', '4.00', 4, '0.00');
+(3, 15, 'Terra', '4.00', 4, '0.00'),
+(4, 16, 'Madeira', '10.00', 5, '0.00'),
+(5, 16, 'Pedra', '20.00', 10, '0.00'),
+(6, 16, 'Terra', '2.00', 20, '0.00'),
+(7, 17, 'Madeira', '10.00', 5, '0.00'),
+(8, 17, 'Pedra', '20.00', 10, '0.00'),
+(9, 17, 'Terra', '2.00', 20, '0.00'),
+(10, 18, 'Madeira', '10.00', 5, '0.00'),
+(11, 18, 'Pedra', '20.00', 10, '0.00'),
+(12, 18, 'Terra', '2.00', 20, '0.00'),
+(13, 19, 'Madeira', '10.00', 5, '0.00'),
+(14, 19, 'Pedra', '20.00', 10, '0.00'),
+(15, 19, 'Terra', '2.00', 20, '0.00');
 
 -- --------------------------------------------------------
 
@@ -206,6 +232,13 @@ CREATE TABLE `outros_fixos` (
   `custo_fixo` varchar(255) NOT NULL,
   `valor` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `outros_fixos`
+--
+
+INSERT INTO `outros_fixos` (`id`, `id_custos_fixos`, `custo_fixo`, `valor`) VALUES
+(1, 4, 'Comida', '1.00');
 
 --
 -- Índices para tabelas despejadas
@@ -256,13 +289,13 @@ ALTER TABLE `outros_fixos`
 -- AUTO_INCREMENT de tabela `custos_fixos`
 --
 ALTER TABLE `custos_fixos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `custos_variaveis`
 --
 ALTER TABLE `custos_variaveis`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `estado`
@@ -280,13 +313,13 @@ ALTER TABLE `horas_trabalhadas`
 -- AUTO_INCREMENT de tabela `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `outros_fixos`
 --
 ALTER TABLE `outros_fixos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas

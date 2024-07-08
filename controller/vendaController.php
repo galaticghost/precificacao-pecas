@@ -41,10 +41,11 @@ class VendaController {
     }
 
     public function inserirHorasTrabalhadas(){
-        echo "bola";
+        
     }
 
     public function inserirCustosFixos(){
+        $totalOutros = 0;
         for($i = 0; $i < $_GET['quantidadeCustoFixo']; $i++){
             ${'outro' . $i} = new CustosFixosOutro($_POST['outro' . $i],$_POST['valorOutro' . $i]);
             $totalOutros += ${'outro' . $i}->getValor();
@@ -55,6 +56,13 @@ class VendaController {
         $_POST['valorIptu'],$totalOutros,$_POST['ppm']);
 
         $custosFixos->inserir();
+
+        $idCustosFixos = $custosFixos->getId();
+
+        for($i = 0; $i < $_GET['quantidadeCustoFixo']; $i++){
+            ${'outro' . $i}->setIdCustosFixos($idCustosFixos);
+            ${'outro' . $i}->inserir();
+        }
     }
 
     public function inserirVenda(){

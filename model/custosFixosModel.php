@@ -124,8 +124,8 @@ class CustosFixos extends Conexao {
         $stmt = $this->conexao->prepare($sql);
         $stmt->bind_param("ddddddddid",$this->aluguel,$this->agua,$this->luz,$this->telefone,$this->internet,$this->iptu,$this->valorOutros,
         $this->valorParcial,$this->pecasProduzidasMes,$this->valorTotal);
-        $stmt->execute();
-        $stmt->close() or die('Falha na inserção');
+        $stmt->execute() or die('Falha na inserção');
+        $stmt->close();
 
         $sql = "SELECT id FROM custos_fixos ORDER BY id DESC LIMIT 1";
         $id = $this->conexao->query($sql);
