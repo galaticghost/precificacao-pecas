@@ -132,5 +132,4 @@ class CustosFixos extends Conexao {
         $id = mysqli_fetch_row($id);
         $this->id = $id[0];
     }
-
 }

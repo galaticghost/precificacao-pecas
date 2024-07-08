@@ -1,2 +1,2 @@
 <?php
-header('Location: view/pecas.html');
+header('Location: view/index.html');

@@ -7,7 +7,7 @@ class Conexao {
     -banco: str
     -conexao: mysql
     --
-    -conexao()
+    #conexao()
     +construct()
 }
 
@@ -20,7 +20,7 @@ class HorasTrabalhadas{
     --
     +getters()
     +setters()
-    +calcular(salarioDesejado,numeroHoras)
+    +construct()
     +inserir()
 }
 

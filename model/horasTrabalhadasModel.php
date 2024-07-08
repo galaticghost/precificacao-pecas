@@ -45,11 +45,12 @@ class HorasTrabalhadas extends Conexao{
         return $this->valorTotalHoras;
     }        
 
-    public function calcular($salarioDesejado,$numeroHoras){
+    public function __construct($salarioDesejado,$numeroHoras){
+        parent::__construct();
         $this->salarioDesejado = $salarioDesejado;
-        $this->valorHora = $salarioDesejado / 176;
-        $this->valorTotalHoras = $this->valorHora * $numeroHoras;
-        return $this->valorTotalHoras;
+        $this->valorHora = round(($salarioDesejado / 176),2);
+        $this->numeroHoras = $numeroHoras;
+        $this->valorTotalHoras = round(($this->valorHora * $this->numeroHoras),2);
     }
     
     public function inserir(){
@@ -60,5 +61,10 @@ class HorasTrabalhadas extends Conexao{
         $this->valorHora,$this->valorTotalHoras);
         $stmt->execute() or
         die('Falha na inserção');
+
+        $sql = "SELECT id FROM horas_trabalhadas ORDER by id DESC LIMIT 1";
+        $id = $this->conexao->query($sql);
+        $id = mysqli_fetch_row($id);
+        $this->id = $id[0];
     } 
 }

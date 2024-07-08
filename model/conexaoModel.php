@@ -5,9 +5,9 @@ abstract Class Conexao {
     private $usuario = 'root';
     private $senha = '';
     private $banco = 'app_precificacao';
-    public $conexao;
+    protected $conexao;
 
-public function __construct(){
+protected function __construct(){
     $this->conexao();
 }
 

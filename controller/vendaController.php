@@ -41,7 +41,8 @@ class VendaController {
     }
 
     public function inserirHorasTrabalhadas(){
-        
+        $horasTrabalhadas = new HorasTrabalhadas($_POST['salarioDesejado'],$_POST['numeroHoras']);
+        $horasTrabalhadas->inserir();
     }
 
     public function inserirCustosFixos(){

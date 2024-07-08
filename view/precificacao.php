@@ -62,8 +62,16 @@
             
             <tr>
                 <th>Horas Trabalhadas</th>
+                <th>Salário Desejado</th>
+                <th>Número de Horas</th>
             </tr>
             
+            <tr>
+                <td></td>
+                <td><input type='number' step='0.01' min='0' placeholder='Digite o salário desejado...' name='salarioDesejado' required></td>
+                <td><input type='number' min='0' placeholder='Digite o número de horas...' name='numeroHoras' required></td>
+            </tr>
+
             <tr>
                 <th>Custos Fixos</th>
             </tr>
