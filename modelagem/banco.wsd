@@ -59,7 +59,9 @@ entity custos_fixos {
     telefone NUMERIC(10,2) NOT NULL
     internet NUMERIC(10,2) NOT NULL
     iptu NUMERIC(10,2) NOT NULL
-    pecas_produzida_mes BIGINT NOT NULL DEFAULT 1
+    valor_parcial NUMERIC(10,2) NOT NULL
+    pecas_produzida_mes BIGINT DEFAULT 1
+    valor_total NUMERIC(10,2) NOT NULL
 }
 
 entity outros_fixos {

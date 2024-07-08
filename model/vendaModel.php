@@ -3,6 +3,7 @@ require_once('conexaoModel.php');
 require_once('custosVariaveisModel.php');
 require_once('horasTrabalhadasModel.php');
 require_once('custosFixosModel.php');
+require_once('custosFixosOutroModel.php');
 
 class Venda extends Conexao{
     

@@ -40,9 +40,21 @@ class VendaController {
         }
     }
 
+    public function inserirCustosFixos(){
+        for($i = 0; $i < $_GET['quantidadeCustoFixo']; $i++){
+            ${'outro' . $i} = new CustosFixosOutro($_POST['outro' . $i],$_POST['valorOutro' . $i]);
+            $totalOutros += ${'outro' . $i}->getValor();
+        }
+
+        $custosFixos = new CustosFixos($_POST['valorAluguel'],$_POST['valorAgua'],
+        $_POST['valorLuz'], $_POST['valorTelefone'], $_POST['valorInternet'],
+        $_POST['valorIptu'],$outro);
+    }
+
     public function handleRequest(){
         if (isset($_GET['quantidadeMateriais'])){
             $this->inserirCustosVariaveis();
+            $this->inserirCustosFixos();
         }
     }
 }

@@ -32,6 +32,19 @@ class CustosFixos {
 
 }
 
+class Materiais {
+    -id: int
+    -idCustosVariaveis: int
+    -material: str
+    -valor: double
+    -quantidadePecas: int
+    -valorTotalMaterial: double
+    --
+    +getters()
+    +setters()
+    +construct()
+}
+
 class Venda {
     -id: int
     -idCustosVariaveis: int
@@ -53,12 +66,12 @@ class Venda {
     +inserir()
 }
 
-Conexao "1..1" -up-|> "1..*" CustosFixos
-Conexao "1..1" -left-|> "1..*" HorasTrabalhadas
-Conexao "1..1" -left-|> "1..*" CustosVariaveis
-Conexao "1..1" -left-|> "1..*" Venda
-Venda -- CustosVariaveis
-Venda -- HorasTrabalhadas
-Venda -- CustosFixos
+Conexao "1..1" <|-up- "1..*" CustosFixos
+Conexao "1..1" <|-left- "1..*" HorasTrabalhadas
+Conexao "1..1" <|-left- "1..*" CustosVariaveis
+Conexao "1..1" <|-left- "1..*" Venda
+Venda <--* CustosVariaveis
+Venda <--* HorasTrabalhadas
+Venda <--* CustosFixos
 
 @enduml

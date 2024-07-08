@@ -1,6 +1,6 @@
 <?php
 
-abstract class Conexao {
+abstract Class Conexao {
     private $localhost = 'localhost';
     private $usuario = 'root';
     private $senha = '';
