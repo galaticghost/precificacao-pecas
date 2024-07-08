@@ -65,9 +65,7 @@
             </tr>
             
             <tr>
-                <th></th>
                 <th>Custos Fixos</th>
-                <th></th>
             </tr>
             
             <tr>
@@ -112,6 +110,10 @@
             </tr>";
             }
             ?>
+            <tr>
+                <td>Peças produzidas/mês</td>
+                <td><input type='number' min='1' placeholder='Peças produzidas por mês...' name='ppm' required></td>
+            </tr>
 
             <tr>
                 <th>Margem de lucros</th>

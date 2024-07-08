@@ -40,6 +40,10 @@ class VendaController {
         }
     }
 
+    public function inserirHorasTrabalhadas(){
+        echo "bola";
+    }
+
     public function inserirCustosFixos(){
         for($i = 0; $i < $_GET['quantidadeCustoFixo']; $i++){
             ${'outro' . $i} = new CustosFixosOutro($_POST['outro' . $i],$_POST['valorOutro' . $i]);
@@ -48,13 +52,21 @@ class VendaController {
 
         $custosFixos = new CustosFixos($_POST['valorAluguel'],$_POST['valorAgua'],
         $_POST['valorLuz'], $_POST['valorTelefone'], $_POST['valorInternet'],
-        $_POST['valorIptu'],$outro);
+        $_POST['valorIptu'],$totalOutros,$_POST['ppm']);
+
+        $custosFixos->inserir();
+    }
+
+    public function inserirVenda(){
+
     }
 
     public function handleRequest(){
         if (isset($_GET['quantidadeMateriais'])){
             $this->inserirCustosVariaveis();
+            $this->inserirHorasTrabalhadas();
             $this->inserirCustosFixos();
+            $this->inserirVenda();
         }
     }
 }
