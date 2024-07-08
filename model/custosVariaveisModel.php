@@ -12,9 +12,14 @@ class CustosVariaveis extends Conexao {
     private $frete;
     private $outros;
     private $valorTotal;
+    private $xina;
 
     public function getId(){
         return $this->id;
+    }
+
+    public function getXina(){
+        return $this->xina;
     }
 
     public function __construct($totalParcial,$embalagem,$embalagemPecas,$cartoes,$cartoesPecas,$etiquetas,$etiquetasPecas,$frete,$fretePecas,$outros,$outrosPecas){
@@ -28,8 +33,8 @@ class CustosVariaveis extends Conexao {
             $this->outros = array($outros,$outrosPecas);
         }
         
-        $this->valorTotal = ($this->embalagem[0] / $this->embalagem[1]) + ($this->cartoes[0] + $this->cartoes[1]) +
-        ($this->etiquetas[0] / $this->etiquetas[1]) + ($this->frete[0] / $this->frete[1]) + $this->totalParcial;
+        $this->valorTotal = round(($this->embalagem[0] / $this->embalagem[1]),2) + round(($this->cartoes[0] + $this->cartoes[1]),2) +
+        round(($this->etiquetas[0] / $this->etiquetas[1]),2) + round(($this->frete[0] / $this->frete[1]),2) + $this->totalParcial;
         $this->valorTotal = round($this->valorTotal,2);
 
         if($this->outros != null){
@@ -53,6 +58,8 @@ class CustosVariaveis extends Conexao {
         $id = $this->conexao->query($sql);
         $id = mysqli_fetch_row($id);
         $this->id = $id[0];
+
+        $this->xina = 10 / 24;
     }
 
 }

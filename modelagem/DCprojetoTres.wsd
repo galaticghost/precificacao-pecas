@@ -5,7 +5,7 @@ class Conexao {
     -usuario: str
     -senha: str
     -banco: str
-    -conexao: mysql
+    #conexao: mysql
     --
     #conexao()
     +construct()
@@ -34,9 +34,9 @@ class CustosVariaveis {
     -outros:
     -valorTotal: double
     --
-    +getters
-    +setters
-    +construct
+    +getters()
+    +setters()
+    +construct()
     +inserirESetId()
 }
 

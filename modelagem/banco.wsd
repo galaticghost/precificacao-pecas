@@ -88,8 +88,8 @@ entity venda {
     id_custos_fixos BIGINT NOT NULL <<FK>>
     --
     total_parcial NUMERIC(10,2) NOT NULL
-    margem_lucro BIGINT NOT NULL DEFAULT 0
-    despesas_comercializacao BIGINT NOT NULL DEFAULT 0
+    margem_lucro BIGINT DEFAULT 0
+    despesas_comercializacao BIGINT DEFAULT 0
     total_venda NUMERIC(10,2) NOT NULL
 }
 
