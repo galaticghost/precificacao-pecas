@@ -185,7 +185,7 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Peças Produzidas por Mês</th>
-                <td><?php echo "R$:" .number_format($ppm,2, ',', '.');?></td>
+                <td><?php echo $ppm;?></td>
             </tr>
 
             <tr>
