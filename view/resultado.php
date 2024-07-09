@@ -82,35 +82,35 @@ $totalVenda = $_GET['tv'];
             <tr>
                 <th>Embalagem por peça</th>
                 <td><?php echo "R$:" .number_format($embalagem,2, ',', '.');?></td>
-                <td><?php echo "R$:" .number_format($embalagemP,2, ',', '.');?></td>
+                <td><?php echo $embalagemP;?></td>
                 <td><?php echo "R$:" .number_format($embalagem / $embalagemP,2, ',', '.');?></td>
             </tr>
 
             <tr>
                 <th>Cartões</th>
                 <td><?php echo "R$:" .number_format($cartoes,2, ',', '.');?></td>
-                <td><?php echo "R$:" .number_format($cartoesP,2, ',', '.');?></td>
+                <td><?php echo $cartoesP;?></td>
                 <td><?php echo "R$:" .number_format($cartoes / $cartoesP,2, ',', '.');?></td>
             </tr>
 
             <tr>
                 <th>Etiqueta</th>
                 <td><?php echo "R$:" .number_format($etiquetas,2, ',', '.');?></td>
-                <td><?php echo "R$:" .number_format($etiquetasP,2, ',', '.');?></td>
+                <td><?php echo $etiquetasP;?></td>
                 <td><?php echo "R$:" .number_format(($etiquetas / $etiquetasP),2, ',', '.');?></td>
             </tr>
 
             <tr>
                 <th>Frete por peça</th>
                 <td><?php echo "R$:" .number_format($frete,2, ',', '.');?></td>
-                <td><?php echo "R$:" .number_format($freteP,2, ',', '.');?></td>
+                <td><?php echo $freteP;?></td>
                 <td><?php echo "R$:" .number_format($frete / $freteP,2, ',', '.');?></td>
             </tr>
 
             <tr>
                 <th>Outros</th>
                 <td><?php echo "R$:" .number_format($outros,2, ',', '.');?></td>
-                <td><?php echo "R$:" .number_format($outrosP,2, ',', '.');?></td>
+                <td><?php echo $outrosP;?></td>
                 <td><?php echo "R$:" .number_format($outros / $outrosP,2, ',', '.');?></td>
             </tr>
 
