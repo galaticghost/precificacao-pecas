@@ -1,0 +1,29 @@
+@startuml Caso de Uso Projeto 1
+left to right direction
+
+actor "Administrador" as Admin
+actor "Usuário Comum" as User
+
+usecase "Gerenciar Perfis de Acesso" as ManageAccessProfiles
+usecase "Gerenciar Usuários" as ManageUsers
+usecase "Gerenciar Credores" as ManageCreditors
+usecase "Gerenciar Bases Físicas" as ManagePhysicalBases
+usecase "Gerenciar Tipos de Despesas" as ManageExpenseTypes
+usecase "Lançar Despesas" as AddExpense
+usecase "Visualizar Despesas" as ViewExpenses
+usecase "Filtrar Despesas" as FilterExpenses
+usecase "Gerar Relatórios" as GenerateReports
+
+Admin --> ManageAccessProfiles
+Admin --> ManageUsers
+Admin --> ManageCreditors
+Admin --> ManagePhysicalBases
+Admin --> ManageExpenseTypes
+Admin --> GenerateReports
+User --> AddExpense
+User --> ViewExpenses
+User --> FilterExpenses
+User --> GenerateReports
+GenerateReports .up.> FilterExpenses : "<<include>>"
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml Caso de Uso Projeto 2
+left to right direction
+
+actor "Administrador" as Admin
+actor "Funcionário" as Employee
+
+usecase "Gerenciar Perfis de Acesso" as ManageAccessProfiles
+usecase "Gerenciar Usuários" as ManageUsers
+usecase "Gerenciar Formas de Atendimento" as ManageServiceMethods
+usecase "Gerenciar Públicos" as ManagePublics
+usecase "Gerenciar Tipos de Atendimento" as ManageServiceTypes
+usecase "Cadastrar Atendimento" as RegisterService
+usecase "Visualizar Atendimento" as ViewService
+usecase "Filtrar Atendimento" as FilterService
+usecase "Gerar Relatórios" as GenerateReports
+
+Admin --> ManageAccessProfiles
+Admin --> ManageUsers
+Admin --> ManageServiceMethods
+Admin --> ManagePublics
+Admin --> ManageServiceTypes
+Admin --> GenerateReports
+Employee --> RegisterService
+Employee --> ViewService
+Employee --> FilterService
+Employee --> GenerateReports
+GenerateReports .up.> FilterService : "<<include>>"
+
+@enduml
