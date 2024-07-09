@@ -195,12 +195,12 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Margem de Lucro</th>
-                <td><?php echo $margemLucro;?></td>
+                <td><?php echo $margemLucro . "%";?></td>
             </tr>
 
             <tr>
                 <th>Despesas de Comercialização</th>
-                <td><?php echo $despesaComercializacao;?></td>
+                <td><?php echo $despesaComercializacao . "%";?></td>
             </tr>
 
             <tr>
