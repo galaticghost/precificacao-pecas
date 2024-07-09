@@ -1,6 +1,10 @@
 <?php
 require_once('../model/vendaModel.php');
 
+$conexao = mysqli_connect('localhost','root','','app_precificacao');
+
+$qM = $_GET['qM'];
+$idCV = $_GET['idCV'];
 $valorParcialCV = $_GET['vP'];
 $embalagem = $_GET['e'];
 $embalagemP = $_GET['eP'];
@@ -19,6 +23,8 @@ $numeroHoras = $_GET['nH'];
 $valorHoras = $_GET['vH'];
 $valorTotalHoras = $_GET['vTH'];
 
+$qCFO = $_GET['qCFO'];
+$idCF = $_GET['idCF'];
 $aluguel = $_GET['al'];
 $agua = $_GET['ag'];
 $luz = $_GET['l'];
@@ -61,15 +67,14 @@ $totalVenda = $_GET['tv'];
             </tr>
 
             <?php
-            for($y = 0; $y < $i; $y++){
+            /*for($y = 0; $y < $qM; $y++){
                 echo "<tr>
                         <td>" . ${'material' . $y}->getMaterial() . "</td>
                         <td>" . ${'material' . $y}->getValor() . "</td>
                         <td>" . ${'material' . $y}->getPecas() . "</td>
                         <td>" . ${'material' . $y}->getValorTotal() . "</td>
                     </tr>";
-                $valorParcial += ${'material' . $y}->getValorTotal();
-            }
+            }*/
             ?>
         
             <tr>
@@ -128,8 +133,8 @@ $totalVenda = $_GET['tv'];
             <tr>
                 <th>Salário desejado</th>
                 <td><?php echo "R$:" .number_format($salarioDesejado,2, ',', '.');?></td>
-                <th>Número Horas</th>
-                <td><?php echo $numeroHoras;?></td>
+                <th>Número de horas</th>
+                <td><?php echo "      " . $numeroHoras;?></td>
             </tr>
             
             <tr>
@@ -173,10 +178,8 @@ $totalVenda = $_GET['tv'];
                 <td><?php echo "R$:" .number_format($iptu,2, ',', '.');?></td>
             </tr>
 
-            <tr>
-                <th>94954</th>
-                <td><?php echo "R$:" .number_format($aluguel,2, ',', '.');?></td>
-            </tr>
+            <?php 
+            ?>
 
             <tr>
                 <th>Total</th>
@@ -185,7 +188,7 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Peças Produzidas por Mês</th>
-                <td><?php echo $ppm;?></td>
+                <td><?php echo "       " . $ppm;?></td>
             </tr>
 
             <tr>
@@ -195,12 +198,12 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Margem de Lucro</th>
-                <td><?php echo $margemLucro . "%";?></td>
+                <td><?php echo "      " .$margemLucro . "%";?></td>
             </tr>
 
             <tr>
                 <th>Despesas de Comercialização</th>
-                <td><?php echo $despesaComercializacao . "%";?></td>
+                <td><?php echo "      " .$despesaComercializacao . "%";?></td>
             </tr>
 
             <tr>

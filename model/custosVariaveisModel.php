@@ -26,10 +26,11 @@ class CustosVariaveis extends Conexao {
         $this->frete = array($frete,$fretePecas);
         $this->outros = array($outros,$outrosPecas);
         
-        $this->valorTotal = ($this->embalagem[0] / $this->embalagem[1]) + ($this->cartoes[0] + $this->cartoes[1]) +
-        ($this->etiquetas[0] / $this->etiquetas[1]) + ($this->frete[0] / $this->frete[1]) +
-        ($this->outros[0] / $this->outros[1]) + $this->totalParcial;
-        $this->valorTotal = round($this->valorTotal,2);
+		$this->valorTotal = $this->outros[0] / $this->outros[1] + $this->totalParcial + $this->cartoes[0] / $this->cartoes[1] + $this->etiquetas[0] / $this->etiquetas[1] + 
+		$this->embalagem[0] / $this->embalagem[1] + 
+		$this->frete[0] / $this->frete[1];
+
+		$this->valorTotal = round($this->valorTotal,2);
     }
 
     public function inserirESetId(){

@@ -69,6 +69,8 @@
     $venda->calcularTotalVenda();
     $venda->inserir();
 
+    $qM = $_GET['quantidadeMateriais'];
+    $idCV = $custosVariaveis->getId();
     $vP = $custosVariaveis->getTotalParcial();
     $e = $custosVariaveis->getEmbalagem();
     $c = $custosVariaveis->getCartoes();
@@ -82,6 +84,8 @@
     $vH = $horasTrabalhadas->getValorHora();
     $vTH = $horasTrabalhadas->getValorTotalHoras();
 
+    $qCFO = $_GET['quantidadeCustoFixo'];
+    $idCF = $custosFixos->getId();
     $al = $custosFixos->getAluguel();
     $ag = $custosFixos->getAgua();
     $l = $custosFixos->getLuz();
@@ -100,4 +104,4 @@
     $dcV = $venda->getValorDespesa();
     $tv = $venda->getValorTotal();
 
-    header('Location: ../view/resultado.php?vP=' . $vP . '&e=' . $e[0] . '&c=' . $c[0] . '&et=' . $et[0] . '&f=' . $f[0] . '&o=' . $o[0] . '&vT=' . $vT . '&sD=' . $sD . '&nH=' . $nH . '&vH=' . $vH . '&vTH=' . $vTH . '&al=' . $al . '&ag=' . $ag . '&l=' . $l .'&t=' . $t . '&in=' . $in . '&iptu=' . $iptu . '&vPF=' . $vPF . '&ppm=' . $ppm . '&vTF=' . $vTF . '&ml=' . $ml . '&dc=' . $dc . '&tpv=' . $tpv . '&mlV=' . $mlV . '&dcV=' . $dcV . '&tv=' . $tv . '&eP=' . $e[1] . '&cP=' . $c[1] . '&etP=' . $et[1] . '&fP=' . $f[1] . '&oP=' . $o[1]);
+    header('Location: ../view/resultado.php?vP=' . $vP . '&e=' . $e[0] . '&c=' . $c[0] . '&et=' . $et[0] . '&f=' . $f[0] . '&o=' . $o[0] . '&vT=' . $vT . '&sD=' . $sD . '&nH=' . $nH . '&vH=' . $vH . '&vTH=' . $vTH . '&al=' . $al . '&ag=' . $ag . '&l=' . $l .'&t=' . $t . '&in=' . $in . '&iptu=' . $iptu . '&vPF=' . $vPF . '&ppm=' . $ppm . '&vTF=' . $vTF . '&ml=' . $ml . '&dc=' . $dc . '&tpv=' . $tpv . '&mlV=' . $mlV . '&dcV=' . $dcV . '&tv=' . $tv . '&eP=' . $e[1] . '&cP=' . $c[1] . '&etP=' . $et[1] . '&fP=' . $f[1] . '&oP=' . $o[1] . '&qM=' . $qM . '&idCV=' . $idCV . '&idCF=' . $idCF . '&qCFO=' . $qCFO);
