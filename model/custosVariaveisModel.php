@@ -12,14 +12,9 @@ class CustosVariaveis extends Conexao {
     private $frete;
     private $outros;
     private $valorTotal;
-    private $xina;
 
     public function getId(){
         return $this->id;
-    }
-
-    public function getXina(){
-        return $this->xina;
     }
 
     public function __construct($totalParcial,$embalagem,$embalagemPecas,$cartoes,$cartoesPecas,$etiquetas,$etiquetasPecas,$frete,$fretePecas,$outros,$outrosPecas){
@@ -29,19 +24,12 @@ class CustosVariaveis extends Conexao {
         $this->cartoes = array($cartoes,$cartoesPecas);
         $this->etiquetas = array($etiquetas,$etiquetasPecas);
         $this->frete = array($frete,$fretePecas);
-        if($outros != null) {
-            $this->outros = array($outros,$outrosPecas);
-        }
+        $this->outros = array($outros,$outrosPecas);
         
-        $this->valorTotal = round(($this->embalagem[0] / $this->embalagem[1]),2) + round(($this->cartoes[0] + $this->cartoes[1]),2) +
-        round(($this->etiquetas[0] / $this->etiquetas[1]),2) + round(($this->frete[0] / $this->frete[1]),2) + $this->totalParcial;
+        $this->valorTotal = ($this->embalagem[0] / $this->embalagem[1]) + ($this->cartoes[0] + $this->cartoes[1]) +
+        ($this->etiquetas[0] / $this->etiquetas[1]) + ($this->frete[0] / $this->frete[1]) +
+        ($this->outros[0] / $this->outros[1]) + $this->totalParcial;
         $this->valorTotal = round($this->valorTotal,2);
-
-        if($this->outros != null){
-            $this->valorTotal += $this->outros[0] / $this->outros[1];
-            $this->valorTotal = round($this->valorTotal,2);
-        }
-
     }
 
     public function inserirESetId(){
@@ -58,8 +46,65 @@ class CustosVariaveis extends Conexao {
         $id = $this->conexao->query($sql);
         $id = mysqli_fetch_row($id);
         $this->id = $id[0];
-
-        $this->xina = 10 / 24;
     }
 
+	public function setId($value) {
+		$this->id = $value;
+	}
+
+	public function getTotalParcial() {
+		return $this->totalParcial;
+	}
+
+	public function setTotalParcial($value) {
+		$this->totalParcial = $value;
+	}
+
+	public function getEmbalagem() {
+		return $this->embalagem;
+	}
+
+	public function setEmbalagem($value) {
+		$this->embalagem = $value;
+	}
+
+	public function getCartoes() {
+		return $this->cartoes;
+	}
+
+	public function setCartoes($value) {
+		$this->cartoes = $value;
+	}
+
+	public function getEtiquetas() {
+		return $this->etiquetas;
+	}
+
+	public function setEtiquetas($value) {
+		$this->etiquetas = $value;
+	}
+
+	public function getFrete() {
+		return $this->frete;
+	}
+
+	public function setFrete($value) {
+		$this->frete = $value;
+	}
+
+	public function getOutros() {
+		return $this->outros;
+	}
+
+	public function setOutros($value) {
+		$this->outros = $value;
+	}
+
+	public function getValorTotal() {
+		return $this->valorTotal;
+	}
+
+	public function setValorTotal($value) {
+		$this->valorTotal = $value;
+	}
 }

@@ -59,11 +59,11 @@ class Venda extends Conexao{
     }
 
     public function calcularLucro(){
-        $this->valorLucro = $this->totalParcial * $this->margemLucro;
+        $this->valorLucro = round(($this->totalParcial * $this->margemLucro / 100),2);
     }
 
     public function calcularDespesas(){
-        $this->valorDespesa = $this->totalParcial * $this->despesaComercializacao;
+        $this->valorDespesa = round(($this->totalParcial * $this->despesaComercializacao / 100),2);
     }
 
     public function calcularTotalVenda(){

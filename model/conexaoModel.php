@@ -7,12 +7,12 @@ abstract Class Conexao {
     private $banco = 'app_precificacao';
     protected $conexao;
 
-protected function __construct(){
-    $this->conexao();
-}
+    protected function __construct(){
+        $this->conexao();
+    }   
 
-private function conexao(){
-    $this->conexao = new mysqli($this->localhost,$this->usuario,$this->senha,$this->banco);
-}
+    private function conexao(){
+        $this->conexao = new mysqli($this->localhost,$this->usuario,$this->senha,$this->banco);
+    }
 
 }

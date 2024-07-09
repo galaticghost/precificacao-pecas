@@ -5,13 +5,13 @@
         $valorOutros = $_POST['valorOutros'];
         $pecasOutros = $_POST['pecasOutros'];
     } else {
-        $valorOutros = null;
-        $pecasOutros = null;
+        $valorOutros = 0;
+        $pecasOutros = 1;
     }        
 
     // Custos Variáveis
     
-        $totalParcial = 0;
+    $totalParcial = 0;
     for($i = 0; $i < $_GET['quantidadeMateriais']; $i++){
         ${'material' . $i} = new Material($_POST['material' . $i],$_POST['valor' . $i],$_POST['pecas' . $i]);
         $totalParcial += ${'material' . $i}->getValorTotalMaterial();
@@ -25,8 +25,6 @@
     $valorOutros,$pecasOutros);
 
     $custosVariaveis->inserirESetId();
-
-    var_dump($custosVariaveis->getXina());
 
     $idCustosVariaveis = $custosVariaveis->getId();
 
@@ -43,9 +41,9 @@
     // Custos Fixos
     
     $totalOutros = 0;
-    for($i = 0; $i < $_GET['quantidadeCustoFixo']; $i++){
-        ${'outro' . $i} = new CustosFixosOutro($_POST['outro' . $i],$_POST['valorOutro' . $i]);
-        $totalOutros += ${'outro' . $i}->getValor();
+    for($x = 0; $x < $_GET['quantidadeCustoFixo']; $x++){
+        ${'outro' . $x} = new CustosFixosOutro($_POST['outro' . $x],$_POST['valorOutro' . $x]);
+        $totalOutros += ${'outro' . $x}->getValor();
     }
 
     $custosFixos = new CustosFixos($_POST['valorAluguel'],$_POST['valorAgua'],
@@ -70,3 +68,36 @@
     $venda->calcularDespesas();
     $venda->calcularTotalVenda();
     $venda->inserir();
+
+    $vP = $custosVariaveis->getTotalParcial();
+    $e = $custosVariaveis->getEmbalagem();
+    $c = $custosVariaveis->getCartoes();
+    $et = $custosVariaveis->getEtiquetas();
+    $f = $custosVariaveis->getFrete();
+    $o = $custosVariaveis->getOutros();
+    $vT = $custosVariaveis->getValorTotal();
+
+    $sD = $horasTrabalhadas->getSalarioDesejado();
+    $nH = $horasTrabalhadas->getNumeroHoras();
+    $vH = $horasTrabalhadas->getValorHora();
+    $vTH = $horasTrabalhadas->getValorTotalHoras();
+
+    $al = $custosFixos->getAluguel();
+    $ag = $custosFixos->getAgua();
+    $l = $custosFixos->getLuz();
+    $t = $custosFixos->getTelefone();
+    $in = $custosFixos->getInternet();
+    $iptu = $custosFixos->getIptu();
+    $vPF = $custosFixos->getValorParcial();
+    $ppm = $custosFixos->getPPM();
+    $vTF = $custosFixos->getValorTotal();
+
+    $ml = $venda->getMargemLucro();
+    $dc = $venda->getDespesaComercializacao();
+
+    $tpv = $venda->getTotalParcial();
+    $mlV = $venda->getValorLucro();
+    $dcV = $venda->getValorDespesa();
+    $tv = $venda->getValorTotal();
+
+    header('Location: ../view/resultado.php?vP=' . $vP . '&e=' . $e[0] . '&c=' . $c[0] . '&et=' . $et[0] . '&f=' . $f[0] . '&o=' . $o[0] . '&vT=' . $vT . '&sD=' . $sD . '&nH=' . $nH . '&vH=' . $vH . '&vTH=' . $vTH . '&al=' . $al . '&ag=' . $ag . '&l=' . $l .'&t=' . $t . '&in=' . $in . '&iptu=' . $iptu . '&vPF=' . $vPF . '&ppm=' . $ppm . '&vTF=' . $vTF . '&ml=' . $ml . '&dc=' . $dc . '&tpv=' . $tpv . '&mlV=' . $mlV . '&dcV=' . $dcV . '&tv=' . $tv . '&eP=' . $e[1] . '&cP=' . $c[1] . '&etP=' . $et[1] . '&fP=' . $f[1] . '&oP=' . $o[1]);
