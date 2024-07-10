@@ -67,14 +67,20 @@ $totalVenda = $_GET['tv'];
             </tr>
 
             <?php
-            /*for($y = 0; $y < $qM; $y++){
-                echo "<tr>
-                        <td>" . ${'material' . $y}->getMaterial() . "</td>
-                        <td>" . ${'material' . $y}->getValor() . "</td>
-                        <td>" . ${'material' . $y}->getPecas() . "</td>
-                        <td>" . ${'material' . $y}->getValorTotal() . "</td>
-                    </tr>";
-            }*/
+            $sql = "SELECT material,valor,quantidade_pecas,valor_total_material FROM material WHERE id_custos_variaveis = ?";
+            $stmt = mysqli_prepare($conexao,$sql);
+            mysqli_stmt_bind_param($stmt,'i',$idCV);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            while($material = mysqli_fetch_assoc($result)){
+                    echo "<tr>
+                    <td>" . $material['material'] . "</td>
+                    <td>R$:" . number_format($material['valor'],2, ',', '.') . "</td>
+                    <td>" . $material['quantidade_pecas'] . "</td>
+                    <td>R$:" . number_format($material['valor_total_material'],2, ',', '.') . "</td>
+                </tr>";
+            
+            }
             ?>
         
             <tr>
@@ -179,6 +185,18 @@ $totalVenda = $_GET['tv'];
             </tr>
 
             <?php 
+                $sql = "SELECT custo_fixo,valor FROM outros_fixos WHERE id_custos_fixos = ?";
+                $stmt = mysqli_prepare($conexao,$sql);
+                mysqli_stmt_bind_param($stmt,'i',$idCF);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                while($outrosCF = mysqli_fetch_assoc($result)){
+                    echo "<tr>
+                    <th>" . $outrosCF['custo_fixo'] . "</th>
+                    <td>R$:" . number_format($outrosCF['valor'],2, ',', '.') . "</td>
+                    </tr>";
+                        
+                        }
             ?>
 
             <tr>

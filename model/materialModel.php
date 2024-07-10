@@ -68,9 +68,9 @@ class Material extends Conexao {
     }
 
     public function inserir(){
-        $sql = "INSERT INTO material(id_custos_variaveis,material,valor,quantidade_pecas) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO material(id_custos_variaveis,material,valor,quantidade_pecas,valor_total_material) VALUES (?,?,?,?,?)";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bind_param('isdi',$this->idCustosVariaveis,$this->material,$this->valor,$this->quantidadePecas);
+        $stmt->bind_param('isdid',$this->idCustosVariaveis,$this->material,$this->valor,$this->quantidadePecas,$this->valorTotalMaterial);
         $stmt->execute() or die('Falha na inserção');
         $stmt->close();  
     }
