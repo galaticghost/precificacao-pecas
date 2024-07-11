@@ -1,3 +1,10 @@
-<h1>Teste</h1>
+# Precificação Peças
 
-Teste
+- Projeto desenvolvido para a A3 
+
+# Features
+
+- Você pode se cadastrar
+- Você pode logar
+- Você cadastrar uma venda e o sistema a calcula
+- Ele funciona 
