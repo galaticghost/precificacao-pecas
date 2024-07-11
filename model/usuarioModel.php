@@ -12,16 +12,29 @@ class Usuario extends Conexao{
     private $endereco;
     private $perfil;
 
-    public function __construct($nome,$login,$senha,$email,$idEstado,$estado,$municipio,$endereco,$idPerfil,$perfil){
+    public function __construct($nome,$login,$senha,$email,$idEstado,$municipio,$endereco,$idPerfil){
         parent::__construct();
         $this->nome = $nome;
         $this->login = $login;
         $this->senha = $senha;
         $this->email = $email;
-        $this->estado = array($idEstado,$estado);
-        $this->municipio = $municipio;
+        $this->estado = array($idEstado);
+
+        $sql = "SELECT estado FROM estado WHERE id = $idEstado";
+		$conexao = mysqli_connect('localhost','root','','app_precificacao');
+		$estado = mysqli_query($conexao,$sql);
+		$estado = mysqli_fetch_row($estado);
+		$this->estado[] = $estado[0];
+
+		$this->municipio = $municipio;
         $this->endereco = $endereco;
-        $this->perfil = array($idPerfil,$perfil);
+        $this->perfil = array($idPerfil);
+
+		$sql = "SELECT nome_perfil FROM perfil WHERE id = $idPerfil";
+		$conexao = mysqli_connect('localhost','root','','app_precificacao');
+		$perfil = mysqli_query($conexao,$sql);
+		$perfil = mysqli_fetch_row($perfil);
+		$this->perfil[] = $perfil[0];
     }
 
 	public function getId() {
@@ -96,9 +109,9 @@ class Usuario extends Conexao{
 		$this->perfil = $value;
 	}
 
-    public function inserirESetId(){
+    public function cadastrarESetId(){
         $sql = "INSERT INTO usuario(id_estado,id_perfil,nome_usuario,login_usuario,senha_usuario,
-        email_usuario,endereco,municipio VALUES (?,?,?,?,?,?,?,?)";
+        email_usuario,endereco,municipio) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bind_param('iissssss',$this->estado[0],$this->perfil[0],$this->nome,$this->login,
         $this->senha,$this->email,$this->endereco,$this->municipio);
@@ -109,6 +122,9 @@ class Usuario extends Conexao{
         $id = $this->conexao->query($sql);
         $id = mysqli_fetch_row($id);
         $this->id = $id[0];
-
     }
+
+	public function logar(){
+		
+	}
 }

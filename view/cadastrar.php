@@ -6,7 +6,7 @@
     <title>Cadastrar</title>
 </head>
 <body>
-    <form action="cadastrarController.php" method="POST">
+    <form action="../controller/cadastrarController.php" method="POST">
         <label>Nome Completo:</label>
         <input type="text" name="nome" placeholder="Digite o seu nome completo: " required>
         <br>
@@ -20,7 +20,7 @@
         <input type="email" name="email" placeholder="Digite o seu email: " required>
         <br>
         <label>Endereço:</label>
-        <input type="text" name="endereço" placeholder="Digite o seu endereço: " required>
+        <input type="text" name="endereco" placeholder="Digite o seu endereço: " required>
         <br>
         <label>Estado:</label>
         <select name="estado">
