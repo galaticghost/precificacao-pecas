@@ -102,6 +102,6 @@ venda ||--|| horas_trabalhadas
 venda ||--|| custos_fixos
 custos_variaveis ||--|{ material
 custos_fixos ||--o{ outros_fixos
-usuario ||--|{ venda
+usuario ||--o{ venda
 
 @enduml
