@@ -49,7 +49,6 @@ class Lancamento {
     -despesa: despesa
     -base: base
     -ativo: bool
-    -competenciaDespesa: bool
     -dataVencimento: date
     -valorLiquido: double
     -valorMulta: double

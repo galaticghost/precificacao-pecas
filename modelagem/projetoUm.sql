@@ -27,8 +27,6 @@ CACHE 1;
 
 ALTER TABLE perfil ALTER COLUMN id SET DEFAULT NEXTVAL('perfil_id_seq');
 
-INSERT INTO perfil(ativo,nome_perfil) VALUES (1,'Carlos');
-
 CREATE TABLE sessao (
 	id BIGINT NOT NULL PRIMARY KEY,
 	nome_sessao VARCHAR(200) NOT NULL,
@@ -141,11 +139,10 @@ CREATE TABLE lancamento (
 	id_base BIGINT NOT NULL,
 	id_despesa BIGINT NOT NULL,
 	ativo BIGINT NOT NULL,
-	competencia_despesa CHAR(2) NOT NULL,
 	data_vencimento DATE NOT NULL,
-	valor_liquido NUMERIC NOT NULL,
-	valor_multa NUMERIC NOT NULL,
-	valor_correcao NUMERIC NOT NULL,
+	valor_liquido NUMERIC(10,2) NOT NULL,
+	valor_multa NUMERIC(10,2) DEFAULT 0 ,
+	valor_correcao NUMERIC(10,2) NOT NULL ,
 	observacao TEXT,
 	data_cadastro_lancamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (id_base) REFERENCES base(id),
@@ -161,5 +158,30 @@ CACHE 1;
 
 ALTER TABLE lancamento ALTER COLUMN id SET DEFAULT NEXTVAL('lancamento_id_seq');
 
+INSERT INTO perfil(ativo,nome_perfil) VALUES (1,'Microempreendedor'),(1,'Trabalhador'),(1,'Empresa');
+
 INSERT INTO usuario(id_perfil,ativo,nome_usuario,email_usuario,login_usuario,senha_usuario) VALUES
-(1,1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','CarlosEduardo798','26a6d15d8c21c99dc6455f7831741db4')
+(2,1,'Carlos Eduardo Bonel Dias','carloseduardoboneldias@gmail.com','Carloseduardo','26a6d15d8c21c99dc6455f7831741db4'),
+(3,1,'João Teste da Silva','joaotestedasilva@gmail.com','JoaoTeste','25f9e794323b453885f5181f1b624d0b'),
+(3,2,'Leonardo Loreto Machado','leozinho123@gmail.com','dominik','ef6b09a0f94320d8d33435de538b8690');
+
+INSERT INTO credor(id_usuario,ativo,nome_credor,telefone_credor,celular_credor) VALUES 
+(1,1,'Companhia Estadual de Energia Elétrica','93783-2931','Xiaomi'), 
+(2,1,'Companhia Estadual de Energia Elétrica','93783-2931','Xiaomi'), 
+(3,2,'Oi S/A','98922-0922','Samsung');
+
+INSERT INTO despesa(id_usuario,id_credor,ativo,nome_despesa) 
+VALUES (1,1,1,'Energia Elétrica'),(2,2,1,'Energia Elétrica'),(3,3,2,'Telefone Fixo');
+
+INSERT INTO base(id_usuario,ativo,nome_base,responsavel_base,telefone_base,celular_base,email_base)
+VALUES (1,1,'SINE - CANGUÇU','Junior Moraes','94733-2783','Xiaomi','sine@ceee.com.br'), 
+(2,1,'SINE - CANGUÇU','Junior Moraes','94733-2783','Xiaomi','sine@ceee.com.br'),
+(3,2,'CASA DO ARTESÃO - POA','Junior Junior Morais','99345-4353','Samsung','casadoartesao@oi.com.br');
+
+INSERT INTO sessao(nome_sessao) VALUES ('fduh327'),('jime984'),('sdjw842');
+
+INSERT INTO perfil_sessao(id_perfil,id_sessao) VALUES (1,1),(2,2),(3,3);
+
+INSERT INTO lancamento(id_usuario,id_base,id_despesa,ativo,data_vencimento,valor_liquido,
+valor_multa,valor_correcao,observacao) VALUES (1,1,1,1,'2024-08-02',302,48,51,'Atrasado'),
+(2,2,2,1,'2024-07-30',352,,32,), (3,3,3,2'2023-12-12',493,,84,);
