@@ -61,6 +61,7 @@ class HorasTrabalhadas extends Conexao{
         $this->valorHora,$this->valorTotalHoras);
         $stmt->execute() or
         die('Falha na inserção');
+        $stmt->close();
 
         $sql = "SELECT id FROM horas_trabalhadas ORDER by id DESC LIMIT 1";
         $id = $this->conexao->query($sql);

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logado']) || $_SESSION == false){
+    header("Location: ../index.php");
+}
 require_once('../model/vendaModel.php');
 
 $conexao = mysqli_connect('localhost','root','','app_precificacao');

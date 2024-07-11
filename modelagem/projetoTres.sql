@@ -139,9 +139,6 @@ CREATE TABLE perfil(
 	nome_perfil VARCHAR(255) NOT NULL
 );
 
-
-
-
 INSERT INTO perfil(nome_perfil) VALUES ('Artesão'),('Autônomo por CPF'),('Microempreendedor individual MEI');
 
 INSERT INTO estado(id,estado) VALUES

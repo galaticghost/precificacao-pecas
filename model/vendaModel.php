@@ -11,6 +11,7 @@ class Venda extends Conexao{
     private $idCustosVariavel;
     private $idHorasTrabalhadas;
     private $idCustosFixos;
+    private $idUsuario;
     private $totalParcial;
     private $margemLucro;
     private $valorLucro;
@@ -18,8 +19,9 @@ class Venda extends Conexao{
     private $valorDespesa;
     private $valorTotal;
     
-    public function __construct($margemLucro,$despesaComercializacao){
+    public function __construct($usuario,$margemLucro,$despesaComercializacao){
         parent::__construct();
+        $this->idUsuario = $usuario;
         $this->margemLucro = $margemLucro;
         $this->despesaComercializacao = $despesaComercializacao;
     }
@@ -72,10 +74,10 @@ class Venda extends Conexao{
 
     public function inserir(){
         $sql = 'INSERT INTO venda(id_custos_variaveis,id_horas_trabalhadas,id_custos_fixos,total_parcial,margem_lucro,
-        despesas_comercializacao,total_venda) VALUES (?,?,?,?,?,?,?)';
+        despesas_comercializacao,total_venda,id_usuario) VALUES (?,?,?,?,?,?,?,?)';
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bind_param('iiidiid',$this->idCustosVariavel,$this->idHorasTrabalhadas,$this->idCustosFixos,
-        $this->totalParcial,$this->margemLucro,$this->despesaComercializacao,$this->valorTotal);
+        $stmt->bind_param('iiidiidi',$this->idCustosVariavel,$this->idHorasTrabalhadas,$this->idCustosFixos,
+        $this->totalParcial,$this->margemLucro,$this->despesaComercializacao,$this->valorTotal,$this->usuario);
         $stmt->execute() or die('Falha na inserção');
         $stmt->close();
 
@@ -163,5 +165,13 @@ class Venda extends Conexao{
 
 	public function setValorTotal($value) {
 		$this->valorTotal = $value;
+	}
+
+	public function getIdUsuario() {
+		return $this->idUsuario;
+	}
+
+	public function setIdUsuario($value) {
+		$this->idUsuario = $value;
 	}
 }
