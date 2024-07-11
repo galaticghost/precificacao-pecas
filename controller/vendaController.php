@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('../model/vendaModel.php');
     
     if ((strlen($_POST['valorOutros']) != 0) && (strlen($_POST['pecasOutros']) != 0)){
@@ -61,7 +62,7 @@
 
     //Venda
 
-    $venda = new venda($_POST['margemLucro'],$_POST['despesaComercializacao']);
+    $venda = new venda($_SESSION['usuarioId'],$_POST['margemLucro'],$_POST['despesaComercializacao']);
     $venda->setIds($custosVariaveis->getId(),$horasTrabalhadas->getId(),$custosFixos->getId());
     $venda->consultarTotalParcial();
     $venda->calcularLucro();

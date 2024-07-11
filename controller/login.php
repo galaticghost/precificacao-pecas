@@ -15,5 +15,6 @@ else{
     session_start();
     $_SESSION['logado'] = true;
     $_SESSION['nome'] = $usuario->getNome();
+    $_SESSION['usuarioId'] = $usuario->getId();
     header("Location: ../index.php");
 }

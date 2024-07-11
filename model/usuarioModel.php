@@ -129,7 +129,7 @@ class Usuario extends Conexao{
     }
 
 	public function logar(){
-		$sql = "SELECT nome_usuario,login_usuario,senha_usuario FROM usuario WHERE login_usuario = ? AND senha_usuario = ?";
+		$sql = "SELECT id,nome_usuario,login_usuario,senha_usuario FROM usuario WHERE login_usuario = ? AND senha_usuario = ?";
 		$stmt = $this->conexao->prepare($sql);
 		$stmt->bind_param('ss',$this->login,$this->senha);
 		$stmt->execute();
@@ -140,7 +140,8 @@ class Usuario extends Conexao{
 		}
 		else {
 			$result = mysqli_fetch_row($result);
-			$this->nome = $result[0];
+			$this->id = $result[0];
+			$this->nome = $result[1];
 			return 1;
 		}
 	}

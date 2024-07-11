@@ -77,7 +77,7 @@ class Venda extends Conexao{
         despesas_comercializacao,total_venda,id_usuario) VALUES (?,?,?,?,?,?,?,?)';
         $stmt = $this->conexao->prepare($sql);
         $stmt->bind_param('iiidiidi',$this->idCustosVariavel,$this->idHorasTrabalhadas,$this->idCustosFixos,
-        $this->totalParcial,$this->margemLucro,$this->despesaComercializacao,$this->valorTotal,$this->usuario);
+        $this->totalParcial,$this->margemLucro,$this->despesaComercializacao,$this->valorTotal,$this->idUsuario);
         $stmt->execute() or die('Falha na inserção');
         $stmt->close();
 
