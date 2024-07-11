@@ -128,8 +128,23 @@ CREATE TABLE atendimento(
 INSERT INTO ativo(id,status) VALUES (1,'Sim'),(2,'Não')
 
 INSERT INTO usuario(ativo,nome_usuario,email_usuario,login_usuario,senha_usuario,telefone_usuario)
-VALUES (1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','carloseduardo7854','26a6d15d8c21c99dc6455f7831741db4','989224922')
+VALUES (1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','carloseduardo7854',
+'26a6d15d8c21c99dc6455f7831741db4','98922-4922'), (2,'Junior Moraes','juniormoraes@hotmail.com','juninhoCaminhão',
+'bc7eb72b23843b8900446b07884db675','90483-0231'), (1,'Leonardo Loreto Machado','LeonardoMachado@gmail.com',
+'dominik','25f9e794323b453885f5181f1b624d0b','98213-3921');
 
-INSERT INTO forma_atendimento(id_usuario,ativo,nome_atendimento) VALUES (1,1,'whatsapp')
+INSERT INTO forma_atendimento(id_usuario,ativo,nome_atendimento) VALUES (1,1,'whatsapp'),(2,2,'E-mail'),(3,1,'Presencial');
 
-INSERT INTO perfil(id_usuario,ativo,nome_perfil) VALUES (1,1,'Empregador')
+INSERT INTO perfil(id_usuario,ativo,nome_perfil) VALUES (1,1,'Empregador'),(2,2,'Trabalhador'),(3,1,'Trabalhador');
+
+INSERT INTO sessao(nome_sessao) VALUES ('jisd382'),('sdjn482'),('jifo921');
+
+INSERT INTO perfil_sessao(id_perfil,id_sessao) VALUES (1,1),(2,2),(3,3);
+
+INSERT INTO publico(id_usuario,ativo,nome_publico) VALUES (1,1,''),(2,2,''),(3,1,'');
+
+INSERT INTO pergunta_publico(id_publico,id_usuario,ativo,descricao_pergunta) VALUES (1,1,1,'bla'),(2,2,2,'blabla'),
+(3,3,1,'blablabla');
+
+INSERT INTO atendimento(id_forma,id_pergunta,id_usuario,ativo,resposta_atendimento) VALUES(1,1,1,1,'blabla'),(2,2,2,2,'bla'),
+VALUES(3,3,3,1'blablablabla');
