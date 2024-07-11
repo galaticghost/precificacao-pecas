@@ -1,0 +1,21 @@
+@startuml Caso de Uso projeto 3
+left to right direction
+
+actor "Artesão" as Artisan
+
+usecase "Cadastrar Artesão" as RegisterArtisan
+usecase "Login" as Login
+usecase "Cadastrar Custos" as RegisterProduct
+usecase "Calcular Preço de Venda" as CalculatePrice
+usecase "Gerar Relatórios" as GenerateReports
+
+Artisan --> RegisterArtisan
+Artisan --> Login
+Artisan --> RegisterProduct
+Login <.- RegisterProduct : <<include>>
+Login <.- GenerateReports : <<include>>
+Artisan --> GenerateReports
+RegisterProduct -up-> CalculatePrice
+GenerateReports .-> CalculatePrice : <<include>> 
+
+@enduml
