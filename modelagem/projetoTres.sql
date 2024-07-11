@@ -169,3 +169,45 @@ INSERT INTO estado(id,estado) VALUES
 (25, 'Tocantins'),
 (26, 'Distrito Federal'),
 (27, 'Roraima');
+
+INSERT INTO custos_fixos (id, aluguel, agua, luz, telefone, internet, iptu, valor_outros, valor_parcial, pecas_produzidas_mes,valor_total) VALUES
+(77, 500.00, 200.00, 200.00, 100.00, 100.00, 50.00, 300.00, 1450.00, 3, 483.33),
+(78, 558.23, 232.32, 235.58, 102.24, 99.99, 321.00, 356.54, 1905.90, 4, 476.47),
+(79, 750.54, 268.48, 212.34, 141.53, 199.99, 500.00, 200.00, 2272.88, 7, 324.70),
+(80, 500.32, 200.42, 194.23, 102.23, 49.84, 250.00, 0.00, 1297.04, 3, 432.35);
+
+INSERT INTO custos_variaveis (id, total_parcial, valor_embalagem, pecas_embalagem, valor_cartoes, pecas_cartoes, valor_etiquetas, pecas_etiquetas, valor_frete,pecas_frete, valor_outros, pecas_outros, valor_total) VALUES
+(59, 26.50, 42.00, 2, 3.00, 55, 43.00, 3, 21.00, 4, 12.00, 2, 73.14),
+(60, 2.05, 15.00, 4, 5.00, 30, 6.00, 4, 21.50, 4, 4.65, 2, 15.17),
+(61, 8.08, 20.00, 7, 7.00, 24, 8.00, 7, 40.84, 7, 0.00, 1, 18.21),
+(62, 1.33, 6.00, 3, 5.00, 20, 5.00, 12, 10.00, 3, 0.00, 1, 7.33);
+
+INSERT INTO horas_trabalhadas (id, numero_horas, salario_desejado, valor_hora, valor_total_horas) VALUES
+(75, 44, 1418, 8.06, 354.64),
+(76, 44, 2180, 12.39, 545.16),
+(77, 44, 3840, 21.82, 960.08),
+(78, 40, 1418, 8.06, 322.4);
+
+INSERT INTO material (id, id_custos_variaveis, material, valor, quantidade_pecas, valor_total_material) VALUES
+(83, 59, 'Madeira', 53.00, 2, 26.50),
+(84, 60, 'Madeira', 12.20, 32, 0.38),
+(85, 60, 'Pedra', 20.00, 12, 1.67),
+(86, 61, 'Mármore', 23.40, 25, 0.94),
+(87, 61, 'Quartzo', 50.00, 7, 7.14),
+(88, 62, 'Madeira', 4.00, 3, 1.33);
+
+INSERT INTO outros_fixos (id, id_custos_fixos,custo_fixo, valor) VALUES
+(37, 77, 'Comida', 300.00),
+(38, 78, 'Comida', 356.54),
+(39, 79, 'Gasolina', 200.00);
+
+INSERT INTO usuario (id, id_estado, id_perfil, nome_usuario, login_usuario, senha_usuario, email_usuario, endereco, municipio) VALUES
+(1, 20, 3, 'Carlos Eduardo Bonel Dias', 'Carloseduardo', 'carloseduardo7', 'carloseduardoboneldias@gmail.com', 'rua 0', 'Cachoeira do Sul'),
+(2, 20, 3, 'Carlos Eduardo Bonel Dias', 'Carloseduardo', '26a6d15d8c21c99dc6455f7831741db4', 'carloseduardoboneldias@gmail.com', 'rua 0', 'Cachoeira do Sul'),
+(3, 20, 3, 'Carlos Eduardo Bonel Dias', 'Carloseduardo', '202cb962ac59075b964b07152d234b70', 'carloseduardoboneldias@gmail.com', 'rua 0', 'Cachoeira do Sul');
+
+INSERT INTO venda (id, id_custos_variaveis, id_horas_trabalhadas, id_custos_fixos, total_parcial, margem_lucro, despesas_comercializacao, total_venda, id_usuario) VALUES
+(15, 59, 75, 77, 911.11, 4, 12, 1056.88, 3),
+(16, 60, 76, 78, 1036.80, 20, 12, 1368.58, 3),
+(17, 61, 77, 79, 1302.99, 38, 25, 2123.88, 3),
+(18, 62, 78, 80, 762.08, 10, 2, 853.53, 3);
