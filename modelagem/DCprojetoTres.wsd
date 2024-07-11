@@ -27,11 +27,11 @@ class HorasTrabalhadas{
 class CustosVariaveis {
     -id: int
     -totalParcial: double
-    -embalagem: 
-    -cartoes:
-    -etiquetas:
-    -frete:
-    -outros:
+    -embalagem: array<double,int>
+    -cartoes: array<double,int>
+    -etiquetas: array<double,int>
+    -frete: array<double,int>
+    -outros: array<double,int>
     -valorTotal: double
     --
     +getters()
@@ -65,10 +65,10 @@ class CustosFixosOutro{
     -custoFixo: str
     -valor: double
     --
-    +getters
-    +setters
-    +construct
-    +inserir
+    +getters()
+    +setters()
+    +construct()
+    +inserir()
 }
 
 class Material {
@@ -90,6 +90,7 @@ class Venda {
     -idCustosVariaveis: int
     -idHorasTrabalhadas: int
     -idCustosFixos: int
+    -idUsuario: int
     -totalParcial: double
     -margemLucro: int
     -valorLucro: int
@@ -106,16 +107,35 @@ class Venda {
     +inserir()
 }
 
+class Usuario {
+    -id: int
+    -nome: str
+    -login: str
+    -senha: str
+    -email: str
+    -estado: str
+    -municipio: str
+    -endereco: str
+    -perfil: str
+    --
+    +getters()
+    +setters()
+    +login()
+    +cadastrar()
+    +construct()
+}
+
 Conexao "1..1" <|-up- "1..*" CustosFixos
 Conexao "1..1" <|-left- "1..*" HorasTrabalhadas
 Conexao "1..1" <|-left- "1..*" CustosVariaveis
 Conexao "1..1" <|-left- "1..*" Venda
 Conexao "1..1" <|-- "1..*" Material
 Conexao "1..1" <|-Right- "1..*" CustosFixosOutro
-CustosFixos "1..1" -- "1..*" CustosFixosOutro
-CustosVariaveis "1..1" -- "1..*" Material
-Venda <--* CustosVariaveis
-Venda <--* HorasTrabalhadas
-Venda <--* CustosFixos
+CustosFixos "1..1" *--> "1..*" CustosFixosOutro
+CustosVariaveis "1..1" *--> "1..*" Material
+Venda "1..1" <--* "1..1" CustosVariaveis
+Venda "1..1" <--* "1..1" HorasTrabalhadas
+Venda "1..1" <--* "1..1" CustosFixos
+Usuario "1..1" *-left-> "1..*" Venda
 
 @enduml

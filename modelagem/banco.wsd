@@ -5,7 +5,7 @@ entity usuario {
     id_estado BIGINT NOT NULL <<FK>>
     id_perfil BIGINT NOT NULL <<FK>>
     --
-    nome_usuario VARCHAR(255) NOT NUL
+    nome_usuario VARCHAR(255) NOT NULL
     login_usuario VARCHAR(200) NOT NULL
     senha_usuario VARCHAR(200) NOT NULL
     email_usuario VARCHAR(200) NOT NULL
@@ -16,7 +16,7 @@ entity usuario {
 entity estado {
     *id BIGINT NOT NULL <<PK>>
     --
-    estado VARCHAR(255) NOT NULL
+    estado VARCHAR(100) NOT NULL
 }
 
 entity perfil {
@@ -59,6 +59,7 @@ entity custos_fixos {
     telefone NUMERIC(10,2) NOT NULL
     internet NUMERIC(10,2) NOT NULL
     iptu NUMERIC(10,2) NOT NULL
+    valor_outros NUMERIC(10,2) NOT NULL
     valor_parcial NUMERIC(10,2) NOT NULL
     pecas_produzida_mes BIGINT DEFAULT 1
     valor_total NUMERIC(10,2) NOT NULL
@@ -76,7 +77,7 @@ entity material {
     *id BIGINT NOT NULL <<PK>>
     id_custos_variaveis BIGINT NOT NULL <<FK>>
     --
-    nome VARCHAR(100) NOT NULL
+    material VARCHAR(100) NOT NULL
     valor NUMERIC(10,2) NOT NULL
     pecas INT NOT NULL
 }
@@ -86,6 +87,7 @@ entity venda {
     id_custos_variaveis BIGINT NOT NULL <<FK>>
     id_horas_trabalhadas BIGINT NOT NULL <<FK>>
     id_custos_fixos BIGINT NOT NULL <<FK>>
+    id_usuario BIGINT NOT NULL <<FK>>
     --
     total_parcial NUMERIC(10,2) NOT NULL
     margem_lucro BIGINT DEFAULT 0
@@ -94,11 +96,12 @@ entity venda {
 }
 
 usuario }|--|| estado
-usuario -- perfil
+usuario }|--|| perfil
 venda ||--|| custos_variaveis
 venda ||--|| horas_trabalhadas
-venda -- custos_fixos
+venda ||--|| custos_fixos
 custos_variaveis ||--|{ material
 custos_fixos ||--o{ outros_fixos
+usuario ||--|{ venda
 
 @enduml
