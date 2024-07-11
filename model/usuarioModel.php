@@ -20,21 +20,25 @@ class Usuario extends Conexao{
         $this->email = $email;
         $this->estado = array($idEstado);
 
-        $sql = "SELECT estado FROM estado WHERE id = $idEstado";
-		$conexao = mysqli_connect('localhost','root','','app_precificacao');
-		$estado = mysqli_query($conexao,$sql);
-		$estado = mysqli_fetch_row($estado);
-		$this->estado[] = $estado[0];
+		if($this->estado[0] != null){
+        	$sql = "SELECT estado FROM estado WHERE id = $idEstado";
+			$conexao = mysqli_connect('localhost','root','','app_precificacao');
+			$estado = mysqli_query($conexao,$sql);
+			$estado = mysqli_fetch_row($estado);
+			$this->estado[] = $estado[0];
+		}
 
 		$this->municipio = $municipio;
         $this->endereco = $endereco;
         $this->perfil = array($idPerfil);
 
-		$sql = "SELECT nome_perfil FROM perfil WHERE id = $idPerfil";
-		$conexao = mysqli_connect('localhost','root','','app_precificacao');
-		$perfil = mysqli_query($conexao,$sql);
-		$perfil = mysqli_fetch_row($perfil);
-		$this->perfil[] = $perfil[0];
+		if($this->perfil[0] != null){
+			$sql = "SELECT nome_perfil FROM perfil WHERE id = $idPerfil";
+			$conexao = mysqli_connect('localhost','root','','app_precificacao');
+			$perfil = mysqli_query($conexao,$sql);
+			$perfil = mysqli_fetch_row($perfil);
+			$this->perfil[] = $perfil[0];
+		}
     }
 
 	public function getId() {
@@ -125,6 +129,19 @@ class Usuario extends Conexao{
     }
 
 	public function logar(){
-		
+		$sql = "SELECT nome_usuario,login_usuario,senha_usuario FROM usuario WHERE login_usuario = ? AND senha_usuario = ?";
+		$stmt = $this->conexao->prepare($sql);
+		$stmt->bind_param('ss',$this->login,$this->senha);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$stmt->close();
+		if(mysqli_num_rows($result) == 0){
+			return null;
+		}
+		else {
+			$result = mysqli_fetch_row($result);
+			$this->nome = $result[0];
+			return 1;
+		}
 	}
 }

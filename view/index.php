@@ -18,7 +18,7 @@
         <button>Cadastrar venda</button></a>
     <a href="../controller/sair.php">
         <button>Sair</button></a>
-    <?php echo "Olá" . $_SESSION['nome'];?>
+    <?php echo "Olá " . $_SESSION['nome'];?>
     
     <?php
     } else {
