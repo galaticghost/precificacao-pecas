@@ -125,7 +125,7 @@ CREATE TABLE atendimento(
 	FOREIGN KEY (ativo) REFERENCES ativo(id)
 );
 
-INSERT INTO ativo(id,status) VALUES (1,'Sim'),(2,'Não')
+INSERT INTO ativo(id,status) VALUES (1,'Sim'),(2,'Não');
 
 INSERT INTO usuario(ativo,nome_usuario,email_usuario,login_usuario,senha_usuario,telefone_usuario)
 VALUES (1,'Carlos Eduardo Bonel Dias','Carloseduardoboneldias@gmail.com','carloseduardo7854',
@@ -141,10 +141,10 @@ INSERT INTO sessao(nome_sessao) VALUES ('jisd382'),('sdjn482'),('jifo921');
 
 INSERT INTO perfil_sessao(id_perfil,id_sessao) VALUES (1,1),(2,2),(3,3);
 
-INSERT INTO publico(id_usuario,ativo,nome_publico) VALUES (1,1,''),(2,2,''),(3,1,'');
+INSERT INTO publico(id_usuario,ativo,nome_publico) VALUES (1,1,'Público'),(2,2,'Privado'),(3,1,'Público');
 
 INSERT INTO pergunta_publico(id_publico,id_usuario,ativo,descricao_pergunta) VALUES (1,1,1,'bla'),(2,2,2,'blabla'),
 (3,3,1,'blablabla');
 
 INSERT INTO atendimento(id_forma,id_pergunta,id_usuario,ativo,resposta_atendimento) VALUES(1,1,1,1,'blabla'),(2,2,2,2,'bla'),
-VALUES(3,3,3,1'blablablabla');
+(3,3,3,1,'blablablabla');

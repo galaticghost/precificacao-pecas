@@ -30,6 +30,7 @@ CREATE TABLE material (
     material VARCHAR(100) NOT NULL,
     valor NUMERIC(10,2) NOT NULL,
     pecas INT NOT NULL,
+    valor_total_material NUMERIC(10,2) NOT NULL,
 	FOREIGN KEY (id_custos_variaveis) REFERENCES custos_variaveis(id)
 );
 
@@ -61,7 +62,7 @@ CREATE TABLE custos_fixos (
     iptu NUMERIC(10,2) NOT NULL,
     valor_outros NUMERIC(10,2) NOT NULL,
     valor_parcial NUMERIC(10,2) NOT NULL,
-    pecas_produzida_mes BIGINT DEFAULT 1,
+    pecas_produzidas_mes BIGINT DEFAULT 1,
     valor_total NUMERIC(10,2) NOT NULL
 );
 
@@ -188,7 +189,7 @@ INSERT INTO horas_trabalhadas (id, numero_horas, salario_desejado, valor_hora, v
 (77, 44, 3840, 21.82, 960.08),
 (78, 40, 1418, 8.06, 322.4);
 
-INSERT INTO material (id, id_custos_variaveis, material, valor, quantidade_pecas, valor_total_material) VALUES
+INSERT INTO material (id, id_custos_variaveis, material, valor, pecas, valor_total_material) VALUES
 (83, 59, 'Madeira', 53.00, 2, 26.50),
 (84, 60, 'Madeira', 12.20, 32, 0.38),
 (85, 60, 'Pedra', 20.00, 12, 1.67),

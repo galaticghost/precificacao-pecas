@@ -184,4 +184,4 @@ INSERT INTO perfil_sessao(id_perfil,id_sessao) VALUES (1,1),(2,2),(3,3);
 
 INSERT INTO lancamento(id_usuario,id_base,id_despesa,ativo,data_vencimento,valor_liquido,
 valor_multa,valor_correcao,observacao) VALUES (1,1,1,1,'2024-08-02',302,48,51,'Atrasado'),
-(2,2,2,1,'2024-07-30',352,,32,), (3,3,3,2'2023-12-12',493,,84,);
+(2,2,2,1,'2024-07-30',352,null,32,), (3,3,3,2,'2023-12-12',493,null,84,null);
