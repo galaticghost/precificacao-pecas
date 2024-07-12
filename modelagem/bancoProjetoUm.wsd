@@ -81,7 +81,7 @@ entity lancamento  #white;line.bold;line:LightCoral  {
     --
     data_vencimento DATE NOT NULL
     valor_liquido DOUBLE NOT NULL
-    valor_multa DOUBLE NOT NULL
+    valor_multa DOUBLE
     valor_correcao DOUBLE NOT NULL
     data_cadastro_lancamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     observacao TEXT
