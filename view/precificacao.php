@@ -7,7 +7,7 @@ if (!isset($_SESSION['logado']) || $_SESSION == false){
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <link rel="icon" href="http://localhost/precificacao-pecas/img/FGTAS.ico">
+    <link rel="icon" href="http://localhost/precificacao-pecas/img/FGTAS.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precificação - Peças</title>
@@ -120,7 +120,7 @@ if (!isset($_SESSION['logado']) || $_SESSION == false){
             <?php
             for($i = 0;$i < $_GET['quantidadeCustoFixo'];$i++){
                 echo "<tr>
-                <td><input type='text' placeholder='Digite o nome do custo...' name='outro" . $i . "' required</td>
+                <td><input type='text' placeholder='Digite o nome do custo...' name='outro" . $i . "' required></td>
                 <td><input type='number' step='0.01' min='0' placeholder='Digite o valor...' name='valorOutro" . $i . "' required></td>
             </tr>";
             }
