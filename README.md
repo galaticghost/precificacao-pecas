@@ -8,4 +8,4 @@
 - Você pode logar
 - Você cadastrar uma venda e o sistema a calcula
 - Ele funciona 
-- Ele gera um **resultado** e você poder __ver__
+- Ele gera um **resultado** e você poder _ver_
