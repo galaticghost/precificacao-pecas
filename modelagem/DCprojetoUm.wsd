@@ -121,7 +121,7 @@ Usuario "1..1" *--> "1..*" Base
 Credor "1..1" *--> "1..*" Despesa
 Despesa "1..1" *--> "1..*" Lancamento
 Base "1..1" *--> "1..*" Lancamento
-Sessao "1..1" <--* "1..*" PerfilSessao
-Perfil "1..1" <--* "1..*" PerfilSessao
+Sessao "1..1" *--> "1..1" PerfilSessao
+Perfil "1..1" *--> "1..1" PerfilSessao
 
 @enduml 

@@ -152,7 +152,7 @@ $totalVenda = $_GET['tv'];
                 <th>Valor da hora</th>
                 <td><?php echo "R$:" .number_format($valorHoras,2, ',', '.');?></td>
                 <th>À Receber</th>
-                <td><?php echo "R$:" .number_format($valorTotalHoras,2, ',', '.');?></td>
+                <th><?php echo "R$:" .number_format($valorTotalHoras,2, ',', '.');?></th>
             </tr>
 
             <tr>
@@ -216,7 +216,7 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Custo Fixo Peça</th>
-                <td><?php echo "R$:" .number_format($vTF,2, ',', '.');?></td>
+                <th><?php echo "R$:" .number_format($vTF,2, ',', '.');?></t>
             </tr>
 
             <tr>
@@ -250,7 +250,7 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Total Parcial da Venda</th>
-                <td><?php echo "R$:" .number_format($totalParcialVenda,2, ',', '.');?></td>
+                <th><?php echo "R$:" .number_format($totalParcialVenda,2, ',', '.');?></th>
             </tr>
 
             <tr>
@@ -265,7 +265,7 @@ $totalVenda = $_GET['tv'];
 
             <tr>
                 <th>Total de Venda</th>
-                <td><?php echo "R$:" .number_format($totalVenda,2, ',', '.');?></td>
+                <th><?php echo "R$:" .number_format($totalVenda,2, ',', '.');?></th>
             </tr>
         </table>
 </body>
